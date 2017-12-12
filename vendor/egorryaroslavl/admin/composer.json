@@ -1,0 +1,21 @@
+{
+  "name": "egorryaroslavl/admin",
+  "description": "Admin panel",
+  "require": {
+    "laravelcollective/html": "^5.4",
+    "arrilot/laravel-widgets": "^3.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Egorryaroslavl\\Admin\\": "src/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "egorr",
+      "email": "yaroslavl.city@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev"
+}

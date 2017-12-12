@@ -1,0 +1,11 @@
+<script src="/_admin/js/bootstrap.min.js"></script>
+<script src="/_admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/_admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/_admin/js/plugins/iCheck/icheck.js"></script>
+<script src="/_admin/js/plugins/select2/select2.full.min.js"></script>
+<script src="/_admin/js/inspinia.js"></script>
+<script src="/_admin/ckeditor/ckeditor.js"></script>
+<script src="/_admin/js/plugins/pace/pace.min.js"></script>
+<script src="/_admin/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="/_admin/js/dual_listbox.js"></script>
+<script src="/_admin/js/common.js"></script>

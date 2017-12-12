@@ -1,0 +1,22 @@
+{
+    "name": "egorryaroslavl/contacts",
+    "description": "Contact form",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "egorr",
+            "email": "yaroslavl.city@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+      "egorryaroslavl/admin": "^1.0.5",
+      "laravelcollective/html": "^5.3.0",
+      "intervention/image": "^2.3"
+    },
+  "autoload": {
+    "psr-4": {
+      "Egorryaroslavl\\Contacts\\": "src/"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@extends('layouts.themes.'.env('TEMPLETE_NAME').'.index')
+@section('content')
+	@include('themes.'.env('TEMPLETE_NAME').'.start_page.about_area')
+	@include('themes.'.env('TEMPLETE_NAME').'.start_page.promotions_area')
+	@include('themes.'.env('TEMPLETE_NAME').'.start_page.menus_area')
+	@include('themes.'.env('TEMPLETE_NAME').'.start_page.event_area')
+	@include('themes.'.env('TEMPLETE_NAME').'.start_page.team_area')
+	@include('themes.'.env('TEMPLETE_NAME').'.start_page.blog_area')
+	@include('themes.'.env('TEMPLETE_NAME').'.start_page.gallery_area')
+@endsection

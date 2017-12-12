@@ -1,0 +1,53 @@
+.dualbox ul {
+	margin-bottom:      10px;
+	padding:            0;
+	max-height:         200px;
+	overflow:           scroll;
+	overflow-x:         hidden;
+	-webkit-transition:  all .5s ease;
+	-moz-transition:     all .5s ease;
+	-o-transition:       all .5s ease;
+	transition:          all .5s ease;
+	}
+
+.dualbox ul li.list-group-item {
+	background-color:    inherit;
+	padding:             5px 6px;
+	cursor:              pointer;
+	-webkit-user-select: none;
+	-moz-user-select:    none;
+	-ms-user-select:     none;
+	user-select:         none;
+	-webkit-transition:  all .5s ease;
+	-moz-transition:     all .5s ease;
+	-o-transition:       all .5s ease;
+	transition:          all .5s ease;
+	}
+
+.dualbox ul li.list-group-item:hover {
+	background: rgba(196, 195, 248, 0.50);
+	color:      darkslategray;
+	}
+
+.dualbox ul li.list-group-item:nth-child(2n) {
+	background: #f4f4f4;
+	}
+
+.dualbox ul li.list-group-item:nth-child(2n):hover {
+	background: rgba(196, 195, 248, 0.50);
+	color:      darkslategray;
+	}
+
+.dualbox ul li.ui-selected,.dualbox ul li.ui-selected:nth-child(2n) {
+	background: rgb(20, 80, 255);
+	color:      #f4f4f4;
+	}
+
+
+.allToSecond, firstToSecond {
+	text-align: right;
+	}
+
+.allToFirst, secondToFirst {
+	text-align: left;
+	}
