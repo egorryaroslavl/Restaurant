@@ -1,11 +1,14 @@
 <?php
 
 
-	Route::get( '/', function (){
-		return view( 'themes.semper.main' )->name( 'main' );
-	} );
 
 	Auth::routes();
+
+	Route::get( '/', function (){
+		return view( 'themes.semper.main' );
+	} )->name('main') ;
+
+
 
 	Route::get( 'about-us', 'AboutController@index' )->name( 'about-us' );
 	Route::get( 'menu', function (){
