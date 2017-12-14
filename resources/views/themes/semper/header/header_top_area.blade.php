@@ -25,5 +25,5 @@
 			</div>
 		</div>
 	</div>
-@include('themes.'.env('TEMPLETE_NAME').'.header.mainmenu_area')
+@include('themes.'.env('TEMPLATE_NAME').'.header.mainmenu_area')
 </div>
