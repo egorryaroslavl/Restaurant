@@ -1,0 +1,69 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 15/12/2017 15:28
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-drink:before { content: "\f100"; }
+.flaticon-transport:before { content: "\f101"; }
+.flaticon-location:before { content: "\f102"; }
+.flaticon-food:before { content: "\f103"; }
+.flaticon-food-2:before { content: "\f104"; }
+.flaticon-food-1:before { content: "\f105"; }
+.flaticon-harvest:before { content: "\f106"; }
+.flaticon-cocktail:before { content: "\f107"; }
+.flaticon-cooking:before { content: "\f108"; }
+.flaticon-serve:before { content: "\f109"; }
+.flaticon-chef:before { content: "\f10a"; }
+.flaticon-menu-3:before { content: "\f10b"; }
+.flaticon-menu-2:before { content: "\f10c"; }
+.flaticon-menu-1:before { content: "\f10d"; }
+.flaticon-menu:before { content: "\f10e"; }
+    
+    $font-Flaticon-drink: "\f100";
+    $font-Flaticon-transport: "\f101";
+    $font-Flaticon-location: "\f102";
+    $font-Flaticon-food: "\f103";
+    $font-Flaticon-food-2: "\f104";
+    $font-Flaticon-food-1: "\f105";
+    $font-Flaticon-harvest: "\f106";
+    $font-Flaticon-cocktail: "\f107";
+    $font-Flaticon-cooking: "\f108";
+    $font-Flaticon-serve: "\f109";
+    $font-Flaticon-chef: "\f10a";
+    $font-Flaticon-menu-3: "\f10b";
+    $font-Flaticon-menu-2: "\f10c";
+    $font-Flaticon-menu-1: "\f10d";
+    $font-Flaticon-menu: "\f10e";

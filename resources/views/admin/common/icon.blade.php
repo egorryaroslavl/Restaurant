@@ -3,7 +3,7 @@
 	<div class="qq-uploader-selector">
 		<div class="row">
 			<div class="col-md-12">
- 				<div class="btn btn-info btn-block qq-upload-button-selector qq-upload-button"><i class="fa fa-image"></i> Выбрать файл
+				<div class="btn btn-info btn-block qq-upload-button-selector qq-upload-button"><i class="fa fa-image"></i> Выбрать файл
 				</div>
 			</div>
 		</div>
@@ -26,7 +26,7 @@
 									<img src="{{  $data->icon   or ''}}" id="picture"
 									     class="qq-thumbnail-selector img-responsive img-thumbnail" qq-server-scale>
 								</div>
- 
+								
 								<button type="button"
 								        class="btn btn-block btn-danger qq-upload-delete-selector qq-upload-delete">
 									<i class="fa fa-trash"></i> Удалить
@@ -38,7 +38,7 @@
 							
 							</li>
 						</ul>
-				
+						
 						<dialog class="qq-alert-dialog-selector">
 							<div class="qq-dialog-message-selector"></div>
 							<button type="button" id="delete-icon" class="btn btn-info qq-cancel-button-selector">
@@ -49,11 +49,11 @@
 				</div>
 			</div>
 		</div>
- 	</div>
+	</div>
 </script>
 <div id="fine-uploader-icon"></div>
 <script>
- $( function(){
+	$( function(){
 
 		var uploader = new qq.FineUploader( {
 			element   : document.getElementById( "fine-uploader-icon" ),
@@ -102,7 +102,7 @@
 			thumbnails: {
 				placeholders: {
 					waitingPath: '/_admin/js/plugins/fine-uploader/placeholders/waiting-generic.png',
- 
+
 				}
 			},
 
@@ -111,7 +111,7 @@
 
 					if( !response.success ){
 
-					/*	$( ".qq-upload-delete-selector" ).hide();*/
+						/*	$( ".qq-upload-delete-selector" ).hide();*/
 						$( ".qq-upload-cancel-selector" ).hide();
 
 					}
@@ -146,7 +146,7 @@
 
 
 		} );
- 
+
 	} );
 </script>
 <style>.qq-alert-dialog-selector{-webkit-box-shadow:2px 6px 15px 0 rgba(50,50,50,0.75);-moz-box-shadow:2px 6px 15px 0 rgba(50,50,50,0.75);box-shadow:2px 6px 15px 0 rgba(50,50,50,0.75);border:1px #9999c1 solid;border-radius:6px;background:-moz-linear-gradient(90deg,#fff 80%,#ff1e00 80%);background:-webkit-linear-gradient(90deg,#fff 80%,#ff1e00 80%);background:-o-linear-gradient(90deg,#fff 80%,#ff1e00 80%);background:linear-gradient(0deg,#fff 80%,#ff1e00 80%)}.qq-dialog-message-selector{padding:20px;font-size:20px;margin-top:10px}.qq-upload-list-selector{padding:0;margin:0}.qq-upload-list-selector li{padding:0;margin:0;text-align:center}.qq-gallery.qq-uploader{position:relative;min-height:220px;overflow-y:hidden;width:inherit;border-radius:6px;border:1px dashed #CCC;background-color:#FAFAFA;padding:8px}</style>
