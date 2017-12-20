@@ -1,4 +1,15 @@
 @import "../flaticon-fonts/font/flaticon.css";
+.visually-hidden {
+	position: absolute !important;
+	width:    1px;
+	height:   1px;
+	margin:   -1px;
+	border:   0;
+	padding:  0;
+	clip:     rect(0 0 0 0);
+	overflow: hidden;
+	}
+
 ul.pagination li.active span {
 	background:         rgb(255, 225, 143);
 	-webkit-transition: all 1s ease;
@@ -64,7 +75,12 @@ td.reorder:hover {
 	display:       block;
 	z-index:       10;
 	}
-
+.icon_dropzone{
+	background:      url(/_admin/img/drag-drop-uploader.png) 50% 50% no-repeat;
+	background-size: contain;
+	min-height:      60px;
+	border: 1px #ccc dotted;
+	}
 #icon-place {
 	background:      url('/_admin/img/upload-icon.png') 50% 50% no-repeat;
 	background-size: contain;
@@ -109,18 +125,49 @@ label small {
 	border:     1px #ccc solid;
 	}
 
+.iconMenu {
+	font-family: "PoiretOneNormal";
+	}
 
-.iconMenu{
-	font-family:"PoiretOneNormal";
+.iconMenu span {
+	font-family: CenturyGothicRegular;
+	font-size:   16px !important;
 	}
-.iconMenu span{
-	font-family:CenturyGothicRegular;
-	font-size: 16px!important;
+
+.iconMenu h2 {
+	font-size:   36px !important;
+	margin-left: 10px;
 	}
-.iconMenu h2{
- 	font-size: 36px!important;
-	margin-left:10px;
+
+.iconMenu span {
+	margin-left: 10px;
 	}
-.iconMenu span{
- 	margin-left:10px;
+
+.relatedList{max-height: 16.0rem}
+.relatedList option {
+	padding:       5px 10px;
+	background:    #ededed;
+	margin-bottom: 2px;
+	cursor:        pointer;
+	}
+.relatedList option:hover {
+	background: #fff392;
+	cursor:     pointer;
+	}
+
+.relatedList option:nth-child(even) {
+	background: #ffffff;
+	}
+
+.relatedList option:nth-child(even):hover {
+	background: #fff392;
+	cursor:     pointer;
+	}
+.sk-spinner-rotating-plane.sk-spinner {
+	width: 300px;
+	height: 300px;
+	background-color: #1ab394;
+	margin: 0 auto;
+	-webkit-animation: sk-rotatePlane 10.2s infinite ease-in-out;
+	animation: sk-rotatePlane 10.2s infinite ease-in-out;
 	}

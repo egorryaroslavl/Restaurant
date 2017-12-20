@@ -81,7 +81,6 @@
 			}
 		}
 
-
 		public static function iconget( Request $request )
 		{
 

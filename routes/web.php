@@ -16,12 +16,23 @@
 	} )->name( 'contact' );
 
 
-	Route::get( 'admin/menus', 'MenusController@index' )->name( 'admin-menus' );
-	Route::get( 'admin/menus/create', 'MenusController@create' )->name( 'admin-menus-create' );
-	Route::post( 'admin/menus/store', 'MenusController@store' )->name( 'admin-menus-store' );
+	Route::group( [ 'middleware' => 'auth' ], function (){
 
 
+		Route::get( 'admin/menus', 'MenusController@index' )->name( 'admin-menus' );
+		Route::get( 'admin/menus/create', 'MenusController@create' )->name( 'admin-menus-create' );
+		Route::get( 'admin/menus/{id}/edit', 'MenusController@edit' )->name( 'admin-menus-edit' );
+		Route::post( 'admin/menus/store', 'MenusController@store' )->name( 'admin-menus-store' );
+		Route::post( 'admin/menus/update', 'MenusController@update' )->name( 'admin-menus-update' );
 
-	Route::post( 'iconsave', 'egorryaroslavl\admin\AdminController@iconsave' );
-	Route::get( 'iconget', 'egorryaroslavl\admin\AdminController@iconget' );
-	Route::any( 'icondelete', 'egorryaroslavl\admin\AdminController@icondelete' );
+
+		Route::any( 'iconsave', 'ImageUploadController@uploadImages' );
+		Route::get( 'iconget', 'MenusController@iconget' );
+		Route::any( 'icondelete', 'ImageUploadController@deleteImages' );
+
+		Route::post( 'admin/related', 'AdminController@related' );
+
+
+	} );
+
+

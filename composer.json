@@ -6,9 +6,11 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "cloudinary/cloudinary_php": "^1.8",
         "egorryaroslavl/about": "^1.0",
         "egorryaroslavl/admin": "1.0.*",
         "egorryaroslavl/contacts": "1.0.2",
+        "jrm2k6/cloudder": "0.4.*",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0"
     },

@@ -174,6 +174,8 @@
 			Collective\Html\HtmlServiceProvider::class,
 			Barryvdh\Elfinder\ElfinderServiceProvider::class,
 			Intervention\Image\ImageServiceProvider::class,
+			JD\Cloudder\CloudderServiceProvider::class,
+			App\Providers\CloudinaryServiceProvider::class,
 
 			/*
 			 * Application Service Providers...
@@ -235,6 +237,8 @@
 			'Form'         => Collective\Html\FormFacade::class,
 			'Html'         => Collective\Html\HtmlFacade::class,
 			'Image'        => Intervention\Image\Facades\Image::class,
+			'Cloudder'     => JD\Cloudder\Facades\Cloudder::class,
+
 
 		],
 

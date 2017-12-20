@@ -1,0 +1,61 @@
+{
+  "_from": "multiselect-two-sides@^2.4.0",
+  "_id": "multiselect-two-sides@2.4.0",
+  "_inBundle": false,
+  "_integrity": "sha1-EwOONm2tGRA6Vy8rqiVWBUHrfcU=",
+  "_location": "/multiselect-two-sides",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "multiselect-two-sides@^2.4.0",
+    "name": "multiselect-two-sides",
+    "escapedName": "multiselect-two-sides",
+    "rawSpec": "^2.4.0",
+    "saveSpec": null,
+    "fetchSpec": "^2.4.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/multiselect-two-sides/-/multiselect-two-sides-2.4.0.tgz",
+  "_shasum": "13038e366dad19103a572f2baa25560541eb7dc5",
+  "_spec": "multiselect-two-sides@^2.4.0",
+  "_where": "/home/egorr/Code/Restaurant/public/_admin/js/plugins",
+  "author": {
+    "name": "Adrian Crisan",
+    "email": "adrian.crisan88@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/crlcu/multiselect/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "deprecated": false,
+  "description": "jQuery multiselect plugin with two sides",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-uglify": "^2.0.0",
+    "jasmine": "^2.5.3"
+  },
+  "homepage": "https://github.com/crlcu/multiselect#readme",
+  "keywords": [
+    "multiselect"
+  ],
+  "license": "MIT",
+  "main": "dist/js/multiselect.min.js",
+  "name": "multiselect-two-sides",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crlcu/multiselect.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "2.4.0"
+}

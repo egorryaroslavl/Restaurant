@@ -17,4 +17,5 @@
 <script src="/themes/{{env('TEMPLATE_NAME')}}/js/contact-form.js"></script>
 <script src="/themes/{{env('TEMPLATE_NAME')}}/js/jquery.sticky.js"></script>
 <!--===== ACTIVE JS=====-->
+{{--<script src="/_admin/js/plugins/dropzone/dropzone.js"></script>--}}
 <script src="/themes/{{env('TEMPLATE_NAME')}}/js/main.js"></script>

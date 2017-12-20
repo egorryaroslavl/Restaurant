@@ -11,6 +11,7 @@
 	<link href="/_admin/css/dual_listbox.css" rel="stylesheet">
 	<link href="/_admin/css/common.css" rel="stylesheet">
 	<script src="/_admin/js/jquery-2.1.1.js"></script>
+	<script src="/_admin/js/jquery.json.min.js"></script>
 	<script>
 		$(document).ready(function(){
 			$( '.i-checks' ).iCheck( {

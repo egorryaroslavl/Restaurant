@@ -1,7 +1,6 @@
 @extends('admin.layouts.basic')
 @section('content')
 	@include('admin.common.errors_block')
-	
 	{{ Form::open( [ 'route' =>  $data->act ,'enctype'=>'multipart/form-data' ] ) }}
 	@if(isset( $data->id ) ) {{ Form::hidden('id',$data->id )}} @endif
 	<div class="tabs-container">
@@ -13,24 +12,19 @@
 		<div class="tab-content">
 			<div id="tab-1" class="tab-pane active">
 				<div class="panel-body">
-							<input
-								type="hidden"
-								name="name"
-								id="name"
-								value="about"><input
-						type="hidden"
-						name="alias"
-						id="alias"
-						value="about">
+					@include('admin.common.name_alias')
+					<div class="hr-line-dashed"></div>
 					@include('admin.common.icon_description_short_description')
 					<div class="hr-line-dashed"></div>
 					@include('admin.common.public_anons_hit')
 					<div class="hr-line-dashed"></div>
+					@include('admin.common.relations_multiselect')
 				</div>
 			</div>
 			<div id="tab-2" class="tab-pane">
 				<div class="panel-body">
 					@include('admin.common.metatag_title_metatag_description_metatag_keywords')
+				
 				</div>
 			</div>
 		</div>
@@ -43,4 +37,3 @@
 		</div>
 	</div>
 @endsection
-

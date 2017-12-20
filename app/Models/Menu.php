@@ -17,6 +17,7 @@
 			'pos',
 			'public',
 			'anons',
+			'icon',
 			'hit',
 			'h1',
 			'metatag_title',
@@ -24,8 +25,9 @@
 			'metatag_keywords' ];
 
 		protected $casts = [
-			'public'  => 'boolean',
-			'anons'   => 'boolean',
-			'hit'     => 'boolean',
+			'icon'   => 'array',
+			'public' => 'boolean',
+			'anons'  => 'boolean',
+			'hit'    => 'boolean',
 		];
 	}
