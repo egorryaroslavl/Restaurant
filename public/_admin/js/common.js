@@ -108,46 +108,49 @@ $( function(){
 
 	} );
 
-	changeStatus = function(field, elId, value) {
+	changeStatus = function( field, elId, value ){
 
 		var Idle = "i_" + elId;
 		var newValue = value == 0 ? 1 : 0;
-		$("#" + elId).val(newValue); // меняем значение кнопки
-		if (newValue == 0) {
-			$("#" + Idle).addClass('shadow');
-			if (field == 'public') {
-				$("#name_" + elId).addClass('shadow');
+		$( "#" + elId ).val( newValue ); // меняем значение кнопки
+		if( newValue == 0 ){
+			$( "#" + Idle ).addClass( 'shadow' );
+			if( field == 'public' ){
+				$( "#name_" + elId ).addClass( 'shadow' );
 			}
 		}
-		if (newValue == 1) {
-			$("#" + Idle).removeClass('shadow');
-			if (field == 'public') {
-				$("#name_" + elId).removeClass('shadow');
+		if( newValue == 1 ){
+			$( "#" + Idle ).removeClass( 'shadow' );
+			if( field == 'public' ){
+				$( "#name_" + elId ).removeClass( 'shadow' );
 			}
 		}
 
-	}
+	};
 
 	/* Сортировка */
-	$("#sortable").sortable({
-		placeholder: "ui-state-highlight",
-		handle: ".reorder",
-		forceHelperSize: true,
+	$( "#sortable" ).sortable( {
+		placeholder         : "ui-state-highlight",
+		handle              : ".reorder",
+		forceHelperSize     : true,
 		forcePlaceholderSize: true,
-		revert: true,
-		update: function(ev, ui) {
-			var sort_data = $(this).sortable('serialize');
-			var table = $(this).data('table');
-			$.ajax({
+		revert              : true,
+		update              : function( ev, ui ){
+			var sort_data = $( this ).sortable( 'serialize' );
+			var table = $( this ).data( 'table' );
+			$.ajax( {
 				type: 'POST',
-				url: '/reorder',
+				url : '/reorder',
 				data: {
 					sort_data: sort_data,
-					table: table,
-					_token: token
+					table    : table,
+					_token   : token
 				}
-			});
+			} );
 		}
-	});
+	} );
+
+
+
 } );
 

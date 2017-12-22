@@ -26,9 +26,10 @@
 		Route::post( 'admin/menus/update', 'MenusController@update' )->name( 'admin-menus-update' );
 
 
-		Route::any( 'iconsave', 'ImageUploadController@uploadImages' );
-		Route::get( 'iconget', 'MenusController@iconget' );
-		Route::any( 'icondelete', 'ImageUploadController@deleteImages' );
+		Route::any( 'iconload', 'IconController@load' )->name( 'iconload');
+		Route::any( 'iconsave', 'IconController@save' )->name( 'iconsave');
+		Route::get( 'iconget', 'MenusController@iconget' )->name('iconget');
+		Route::any( 'icondelete', 'IconController@delete' )->name('icondelete');
 
 		Route::post( 'admin/related', 'AdminController@related' );
 

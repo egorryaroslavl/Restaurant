@@ -9,3 +9,8 @@
 <script src="/_admin/js/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="/_admin/js/dual_listbox.js"></script>
 <script src="/_admin/js/common.js"></script>
+@if(in_array(Route::currentRouteName(),[ 'admin-menus-edit','admin-menus-create'])   )
+{{--<script src="/_admin/js/plugins/dropzone/dropzone.js"></script>--}}
+<script src="/_admin/js/images.js"></script>
+<script src="/_admin/js/menu.js"></script>
+@endif

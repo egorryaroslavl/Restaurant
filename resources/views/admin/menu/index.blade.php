@@ -34,8 +34,8 @@
 											id="name_public_{{$item->id}}"
 											style="max-width:30.0rem;overflow: hidden">
 											<a href="/admin/{{$data->table}}/{{$item->id}}/edit">
-												<span class="iconPlace"
-												      style="background-image: url({{$item->icon or  '/_admin/img/no-logo-24x24.png'}});"></span>  {{$item->name }}</a>
+											 	<span class="thumbnail_20x20"
+												      style="background-image: url({{$item->icon->thumbnail or  '/_admin/img/no-logo-24x24.png'}});"></span>  {{$item->name }}</a>
 										</td>
 										<td>
 											@include('admin.common.status_buttons_set')

@@ -1,6 +1,7 @@
 <div class="row">
-    <div class="col-xs-3">
-       @include('admin.common.icon')
+    <div class="col-xs-3 icon-place">
+      {{-- @include('admin.common.icon')--}}
+	    
     </div>
     <div class="col-xs-9">
         <div class="form-group">

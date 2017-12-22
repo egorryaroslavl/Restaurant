@@ -3,6 +3,7 @@
 	namespace App\Models;
 
 	use Illuminate\Database\Eloquent\Model;
+	use JD\Cloudder\Facades\Cloudder;
 
 	class Menu extends Model
 	{
@@ -30,4 +31,28 @@
 			'anons'  => 'boolean',
 			'hit'    => 'boolean',
 		];
+
+		public $thumb;
+
+
+		public function icon()
+		{
+			$thumb = $this->hasOne( 'App\Models\Icon', 'parent_id', 'id' )->where( 'parent_table', '=', 'menus' );
+
+
+			return $thumb;
+
+
+		}
+
+		public function thumbnail()
+		{
+
+
+			return	$this->icon();
+
+
+
+
+		}
 	}

@@ -2,6 +2,7 @@
 
 	namespace App\Http\Controllers;
 
+	use App\Models\Image;
 	use App\Models\Menu;
 	use Illuminate\Http\Request;
 	use JD\Cloudder\Facades\Cloudder;
@@ -30,25 +31,33 @@
 
 
 				Cloudder::upload( $filename, $publicId, $options, $tags );
-				$res = Cloudder::getResult();
+				$result = Cloudder::getResult();
+				/*			'public_id',
+							'version',
+							'url',
+							'parameters',
+							'alt',
+							'description',
+							'parent_table',
+							'parent_id',*/
 
-				$options_ = [
-					"public_id" => $publicId . "_thumbnail",
-					"crop"      => "fill",
-					"width"     => 300,
-					"height"    => 220,
-					"tags"      => [ "restaurant", "thumbnail" ],
-					"version"   => $res[ 'version' ],
-				];
 
 
-				$thumb      = Cloudder::show( $publicId, $options_ );
-				$result     = array_merge( $res, [ 'thumb' => $thumb ] );
-				$menu       = Menu::find( $request->id );
+				\DB::table( 'icons' )->insert(
+					[ 'public_id'  => $publicId,
+					  'version'    => $result[ 'version' ],
+					  'url'        => $result[ 'url' ],
+					  'parameters' => json_encode( $result ),
+                      'parent_table' => $request->table,
+                      'parent_id'    => $request->id,
+					]
+				);
+
+
+/*				$menu       = Menu::find( $request->id );
 				$menu->icon = $publicId;
-				//$menu->icon = json_encode( $result );
-				//$menu->icon = $result[ 'url' ];
-				$menu->save();
+
+				$menu->save();*/
 				echo json_encode( $result );
 			}
 		}

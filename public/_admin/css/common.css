@@ -142,7 +142,17 @@ label small {
 .iconMenu span {
 	margin-left: 10px;
 	}
-
+.thumbnail_20x20 {
+	display:             inline-block;
+	width:               20px;
+	height:              20px;
+	float:               left;
+	margin-right:        6px;
+	background-color:    #e3e3e3;
+	background-position: 50% 50%;
+	background-repeat:   no-repeat;
+	background-size:     cover;
+	}
 .relatedList{max-height: 16.0rem}
 .relatedList option {
 	padding:       5px 10px;

@@ -25,6 +25,7 @@
 		<div class="wrapper wrapper-content animated fadeInRight">
 			<div class="row">
 				<div class="col-lg-12">
+					@if(isset($data->table)) <input name="table" value="{{$data->table}}" type="hidden"/>  @endif
 					@yield('content' )
 				</div>
 			</div>
