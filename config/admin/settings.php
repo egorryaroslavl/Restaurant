@@ -1,21 +1,32 @@
 <?php
 
 	return [
-		'company_name'      => 'Company Name',
-		'company_site'      => '#',
-		'image_max_width'   => 1000,
-		'image_max_height'  => 800,
-		'avatar_max_width'  => 1000,
-		'avatar_max_height' => 800,
-		'icon_width'        => 370,
-		'icon_height'       => 220,
-		'thumb_params'      => [
+		'company_name'           => 'Ресторан "Буян"',
+		'company_site'           => '#',
+		'image_max_width'        => 1000,
+		'image_max_height'       => 800,
+		'avatar_max_width'       => 1000,
+		'avatar_max_height'      => 800,
+		'icon_width'             => 370,
+		'icon_height'            => 220,
+		'per_page'               => 20,
+		'text_short_description' => 600,
+		'first_item'             => ' Выбрать ',
+		'thumb_params'           => [
 			"width"   => 300,
 			"height"  => 220,
-			"gravity" => "face",
+/*			"gravity" => "face",*/
 			"crop"    => "thumb",
 		],
-
+		'icons_params'           => [
+			'width'         => 1000,
+			'height'        => 1000,
+			'crop'          => 'fit',
+			'format'        => 'png',
+			'default_image' => 'no-image_rn9n3d.png',
+			'resource_type' => 'image',
+			'invalidate'    => true,
+		],
 		'thumbnail_prefix'    => [
 			'small'  => 'thumb_small_',
 			'middle' => 'thumb_middle_',

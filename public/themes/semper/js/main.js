@@ -306,7 +306,7 @@ jQuery( document ).on( 'keyup', 'body', function( e ){
 					showCancelButton  : true,
 					cancelButtonText  : 'Закрыть',
 					cancelButtonColor : '#d33',
-					confirmButtonClass: 'btn btn-sm hvr-bounce-to-right',
+					confirmButtonClass: 'btn btn-sm hvr-bounce-to-left',
 					confirmButtonText : '<a href="/admin" style="color:#fff">Войти</a>',
 					timer             : 7000
 				} );

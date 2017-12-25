@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="ibox">
-					<h5>Menu</h5>
+					<h5>Блюда</h5>
 					<a href="/admin/{{$data->table}}/create" class="btn btn-primary"><i
 							class="fa fa-plus"></i> Добавить запись</a><br><br>
 					<div class="ibox-content">
@@ -26,6 +26,7 @@
 							<tbody id="sortable" data-table="{{$data->table or ''}}">
 							@if(count( $data ) > 0)
 								@foreach( $data as $item )
+		{{-- {{$item->icon->public_id}}--}}
 									<tr class="ui-state-default" id="id_{{$item->id}}">
 										<td class="reorder"><i class="fa fa-ellipsis-v"></i> <i
 												class="fa fa-ellipsis-v"></i>
@@ -34,7 +35,7 @@
 											id="name_public_{{$item->id}}"
 											style="max-width:30.0rem;overflow: hidden">
 											<a href="/admin/{{$data->table}}/{{$item->id}}/edit">
-												{!! thumbnail($item->icon_public_id) !!}   {{$item->name }}</a>
+											 	{!! thumbnail($item->icon_public_id)  !!}  {{$item->name }}</a>
 										</td>
 										<td>
 											@include('admin.common.status_buttons_set')

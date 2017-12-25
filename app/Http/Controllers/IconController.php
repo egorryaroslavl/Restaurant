@@ -12,6 +12,11 @@
 
 		private $thumbParams = '';
 
+		/**
+		 * @param bool $arr
+		 *
+		 * @return array|mixed|string
+		 */
 		public function thumbParams( $arr = false )
 		{
 			$this->thumbParams = config( 'admin.settings.thumb_params' );
@@ -20,25 +25,33 @@
 
 		}
 
+		/**
+		 * @param \Illuminate\Http\Request $request
+		 *
+		 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+		 */
 		public function load( Request $request )
 		{
 			if( isset( $request->table ) ){
 
-				$data = Icon::where( [
-					[ 'parent_id', '=', $request->id ],
-					[ 'parent_table', '=', $request->table ],
-				] )->first();
+				$data = new Icon();
+
+				$icon_public_id = \DB::table( $request->table )
+					->where( 'id', $request->id )
+					->pluck( 'icon_public_id' )
+					->first();
+
+				$iconPublicId = $icon_public_id === null
+					? 'no-image_rn9n3d.png'
+					: $icon_public_id;
+
+				$data->tumbUrl = \Cloudder::show( $iconPublicId,
+					$this->thumbParams( [ 'default_image' => 'no-image_rn9n3d.png' ] ) );
 
 
-				if( $data === null ){
-					$data          = new Icon();
-					$data->tumbUrl = '/_admin/img/no-image.png';
-				} else{
-					$data->tumbUrl = \Cloudder::show( $data->public_id,
-						$this->thumbParams( [ 'version' => $data->version ] ) );
-				}
-				$data->table = $request->table;
-				$data->id    = $request->id;
+				$data->table          = $request->table;
+				$data->id             = $request->id;
+				$data->icon_public_id = $icon_public_id;
 				return view( 'admin.common.icon', [ 'iconData' => $data ] );
 
 			}
@@ -47,83 +60,66 @@
 		}
 
 
+		/**
+		 * @param \Illuminate\Http\Request $request
+		 */
 		public function save( Request $request )
 		{
 
 			if( $request->hasFile( 'photo' ) ){
 
-				$tags    = [ 'restaurant', 'icons' ];
-				$options = [
-					'width'         => 1000,
-					'height'        => 1000,
-					'crop'          => 'fill',
-					'tags'          => $tags,
-					'format'        => 'png',
-					'resource_type' => 'image',
-					'invalidate'    => true,
+				$tags     = [ 'restaurant', 'icons', $request->table ];
+				$options_ = config( 'admin.settings.icons_params' );
 
-				];
+				$options = array_merge( $options_, $tags );
 
-				$publicId = 'iconMenuId' . $request->id;
+				/* Создаём public_id  используя рандомные числа */
+				$publicId = 'icon' . title_case( $request->table ) . 'Id' . randId();
+
 				$filename = $request->file( 'photo' );
 
 				$uploadResult = \Cloudder::upload( $filename, $publicId, $options, $tags );
 
 				$imageData = $uploadResult->getResult();
 
-
-				$thumbnail = \Cloudder::show( $publicId, $this->thumbParams( [ 'version' => $imageData[ 'version' ] ] ) );
-
-
-				$count = Icon::where( [
-					[ 'parent_id', '=', $request->id ],
-					[ 'parent_table', '=', $request->table ],
-					[ 'public_id', '=', $publicId ],
-				] )->count();
-
-				if( $count > 0 ){
-
-					Icon::where( 'parent_id', '=', $request->id )
-						->where( 'parent_table', '=', $request->table )
-						->where( 'public_id', '=', $publicId )
-						->update(
-							[
-								'version'    => $imageData[ 'version' ],
-								'url'        => $imageData[ 'url' ],
-								'thumbnail'  => $thumbnail,
-								'parameters' => json_encode( $imageData ),
-							]
-
-						);
-				} else{
-
-					$icon               = new Icon();
-					$icon->parent_id    = $request->id;
-					$icon->parent_table = $request->table;
-					$icon->public_id    = $publicId;
-					$icon->version      = $imageData[ 'version' ];
-					$icon->url          = $imageData[ 'url' ];
-					$icon->thumbnail    = $thumbnail;
-					$icon->parameters   = json_encode( $imageData );
-					$icon->save();
+				if( $request->id !== null ){
+					/* если это обновление, нужно удалить старую картинку и обновить поле public_id в БД */
+					$ex = \DB::table( $request->table )
+						->where( 'id', $request->id )
+						->pluck( 'icon_public_id' )
+						->first();
+					if( $ex !== null ){
+						Cloudder::destroyImage( $ex );
+					}
+					\DB::table( $request->table )
+						->where( 'id', $request->id )
+						->update( [ 'icon_public_id' => $publicId ] );
 
 				}
 
+				$thumbnail = \Cloudder::show( $publicId, $this->thumbParams( [ 'version' => $imageData[ 'version' ] ] ) );
 
-				echo json_encode( [ 'url' => $thumbnail ] );
+				$report = [ 'url' => $thumbnail, 'publicId' => $publicId ];
+
+				echo json_encode( $report );
 			}
 
 		}
 
+		/**
+		 * @param \Illuminate\Http\Request $request
+		 *
+		 * @return string
+		 */
 		public function delete( Request $request )
 		{
 
 			if( $request->id != 0 ){
 
-				Cloudder::destroyImage( $request->public_id );
+				Cloudder::destroyImage( $request->icon_public_id );
 				$res = Icon::where( 'parent_id', '=', $request->id )
 					->where( 'parent_table', '=', $request->table )
-					->where( 'public_id', '=', $request->public_id )
+					->where( 'public_id', '=', $request->icon_public_id )
 					->delete();
 
 				if( $res > 0 ){

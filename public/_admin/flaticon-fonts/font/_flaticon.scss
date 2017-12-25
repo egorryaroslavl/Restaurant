@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 15/12/2017 15:55
+    Creation date: 23/12/2017 16:27
     */
 
     @font-face {
@@ -36,56 +36,82 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-bar:before { content: "\f100"; }
-.flaticon-food-7:before { content: "\f101"; }
-.flaticon-food-6:before { content: "\f102"; }
-.flaticon-food-5:before { content: "\f103"; }
-.flaticon-food-4:before { content: "\f104"; }
-.flaticon-party:before { content: "\f105"; }
-.flaticon-food-3:before { content: "\f106"; }
-.flaticon-cake:before { content: "\f107"; }
-.flaticon-restaurant-eating-tools-set-of-three-pieces:before { content: "\f108"; }
-.flaticon-book:before { content: "\f109"; }
-.flaticon-menu-4:before { content: "\f10a"; }
-.flaticon-drink:before { content: "\f10b"; }
-.flaticon-transport:before { content: "\f10c"; }
-.flaticon-location:before { content: "\f10d"; }
-.flaticon-food:before { content: "\f10e"; }
-.flaticon-food-2:before { content: "\f10f"; }
-.flaticon-food-1:before { content: "\f110"; }
-.flaticon-harvest:before { content: "\f111"; }
-.flaticon-cocktail:before { content: "\f112"; }
-.flaticon-cooking:before { content: "\f113"; }
-.flaticon-serve:before { content: "\f114"; }
-.flaticon-chef:before { content: "\f115"; }
-.flaticon-menu-3:before { content: "\f116"; }
-.flaticon-menu-2:before { content: "\f117"; }
-.flaticon-menu-1:before { content: "\f118"; }
-.flaticon-menu:before { content: "\f119"; }
+    .flaticon-cafe:before { content: "\f100"; }
+.flaticon-add-event:before { content: "\f101"; }
+.flaticon-calendar:before { content: "\f102"; }
+.flaticon-fireworks-on-event-day-reminder-calendar-page-of-interface:before { content: "\f103"; }
+.flaticon-election-event-on-a-calendar-with-star-symbol:before { content: "\f104"; }
+.flaticon-reservation:before { content: "\f105"; }
+.flaticon-food-delivery:before { content: "\f106"; }
+.flaticon-order-food:before { content: "\f107"; }
+.flaticon-menu-2:before { content: "\f108"; }
+.flaticon-covered-food-tray-on-a-hand-of-hotel-room-service:before { content: "\f109"; }
+.flaticon-ingredients:before { content: "\f10a"; }
+.flaticon-add-ingredients:before { content: "\f10b"; }
+.flaticon-dishe1:before { content: "\f10c"; }
+.flaticon-dishe2:before { content: "\f10d"; }
+.flaticon-bar:before { content: "\f10e"; }
+.flaticon-food:before { content: "\f10f"; }
+.flaticon-glass-of-vine:before { content: "\f110"; }
+.flaticon-bottle-of-vine:before { content: "\f111"; }
+.flaticon-party:before { content: "\f112"; }
+.flaticon-cutlery:before { content: "\f113"; }
+.flaticon-cake-1:before { content: "\f114"; }
+.flaticon-restaurant-eating-tools-set-of-three-pieces:before { content: "\f115"; }
+.flaticon-menu0:before { content: "\f116"; }
+.flaticon-menu-1:before { content: "\f117"; }
+.flaticon-drink:before { content: "\f118"; }
+.flaticon-transport:before { content: "\f119"; }
+.flaticon-location:before { content: "\f11a"; }
+.flaticon-glass-of-vine-o:before { content: "\f11b"; }
+.flaticon-food-o:before { content: "\f11c"; }
+.flaticon-cake:before { content: "\f11d"; }
+.flaticon-harvest:before { content: "\f11e"; }
+.flaticon-cocktail:before { content: "\f11f"; }
+.flaticon-cooking:before { content: "\f120"; }
+.flaticon-serve:before { content: "\f121"; }
+.flaticon-chef:before { content: "\f122"; }
+.flaticon-menu:before { content: "\f123"; }
+.flaticon-menu-0:before { content: "\f124"; }
+.flaticon-menu1:before { content: "\f125"; }
+.flaticon-point-in-menu:before { content: "\f126"; }
     
-    $font-Flaticon-bar: "\f100";
-    $font-Flaticon-food-7: "\f101";
-    $font-Flaticon-food-6: "\f102";
-    $font-Flaticon-food-5: "\f103";
-    $font-Flaticon-food-4: "\f104";
-    $font-Flaticon-party: "\f105";
-    $font-Flaticon-food-3: "\f106";
-    $font-Flaticon-cake: "\f107";
-    $font-Flaticon-restaurant-eating-tools-set-of-three-pieces: "\f108";
-    $font-Flaticon-book: "\f109";
-    $font-Flaticon-menu-4: "\f10a";
-    $font-Flaticon-drink: "\f10b";
-    $font-Flaticon-transport: "\f10c";
-    $font-Flaticon-location: "\f10d";
-    $font-Flaticon-food: "\f10e";
-    $font-Flaticon-food-2: "\f10f";
-    $font-Flaticon-food-1: "\f110";
-    $font-Flaticon-harvest: "\f111";
-    $font-Flaticon-cocktail: "\f112";
-    $font-Flaticon-cooking: "\f113";
-    $font-Flaticon-serve: "\f114";
-    $font-Flaticon-chef: "\f115";
-    $font-Flaticon-menu-3: "\f116";
-    $font-Flaticon-menu-2: "\f117";
-    $font-Flaticon-menu-1: "\f118";
-    $font-Flaticon-menu: "\f119";
+    $font-Flaticon-cafe: "\f100";
+    $font-Flaticon-add-event: "\f101";
+    $font-Flaticon-calendar: "\f102";
+    $font-Flaticon-fireworks-on-event-day-reminder-calendar-page-of-interface: "\f103";
+    $font-Flaticon-election-event-on-a-calendar-with-star-symbol: "\f104";
+    $font-Flaticon-reservation: "\f105";
+    $font-Flaticon-food-delivery: "\f106";
+    $font-Flaticon-order-food: "\f107";
+    $font-Flaticon-menu-2: "\f108";
+    $font-Flaticon-covered-food-tray-on-a-hand-of-hotel-room-service: "\f109";
+    $font-Flaticon-ingredients: "\f10a";
+    $font-Flaticon-add-ingredients: "\f10b";
+    $font-Flaticon-dishe1: "\f10c";
+    $font-Flaticon-dishe2: "\f10d";
+    $font-Flaticon-bar: "\f10e";
+    $font-Flaticon-food: "\f10f";
+    $font-Flaticon-glass-of-vine: "\f110";
+    $font-Flaticon-bottle-of-vine: "\f111";
+    $font-Flaticon-party: "\f112";
+    $font-Flaticon-cutlery: "\f113";
+    $font-Flaticon-cake-1: "\f114";
+    $font-Flaticon-restaurant-eating-tools-set-of-three-pieces: "\f115";
+    $font-Flaticon-menu0: "\f116";
+    $font-Flaticon-menu-1: "\f117";
+    $font-Flaticon-drink: "\f118";
+    $font-Flaticon-transport: "\f119";
+    $font-Flaticon-location: "\f11a";
+    $font-Flaticon-glass-of-vine-o: "\f11b";
+    $font-Flaticon-food-o: "\f11c";
+    $font-Flaticon-cake: "\f11d";
+    $font-Flaticon-harvest: "\f11e";
+    $font-Flaticon-cocktail: "\f11f";
+    $font-Flaticon-cooking: "\f120";
+    $font-Flaticon-serve: "\f121";
+    $font-Flaticon-chef: "\f122";
+    $font-Flaticon-menu: "\f123";
+    $font-Flaticon-menu-0: "\f124";
+    $font-Flaticon-menu1: "\f125";
+    $font-Flaticon-point-in-menu: "\f126";

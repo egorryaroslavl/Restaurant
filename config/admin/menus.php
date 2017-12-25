@@ -6,7 +6,7 @@
 		'menu'            => [
 			'url'   => '/admin/menus',
 			'title' => 'Меню',
-			'icon'  => 'glyph-icon flaticon-menu-4',
+			'icon'  => 'glyph-icon flaticon-menu-1',
 			'pages' => [],
 		],
 		'icon_width'      => 220,

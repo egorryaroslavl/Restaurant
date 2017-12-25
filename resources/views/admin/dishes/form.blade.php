@@ -8,7 +8,7 @@
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#tab-1" onclick="return false">Основные данные</a>
 			</li>
-			<li><a data-toggle="tab" href="#tab-2" onclick="return false">SEO</a></li>
+			<li class=""><a data-toggle="tab" href="#tab-2" onclick="return false">SEO</a></li>
 		</ul>
 		<div class="tab-content">
 			<div id="tab-1" class="tab-pane active">

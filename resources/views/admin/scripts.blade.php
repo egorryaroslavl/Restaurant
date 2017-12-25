@@ -14,3 +14,8 @@
 <script src="/_admin/js/images.js"></script>
 <script src="/_admin/js/menu.js"></script>
 @endif
+@if(in_array(Route::currentRouteName(),[ 'admin-dishes-edit','admin-dishes-create'])   )
+	{{--<script src="/_admin/js/plugins/dropzone/dropzone.js"></script>--}}
+	<script src="/_admin/js/images.js"></script>
+	<script src="/_admin/js/dishes.js"></script>
+@endif

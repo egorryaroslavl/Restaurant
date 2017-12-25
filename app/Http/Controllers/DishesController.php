@@ -2,15 +2,17 @@
 
 	namespace App\Http\Controllers;
 
-	use App\Models\Menu;
+	use App\Models\Dishe;
 	use Illuminate\Http\Request;
 	use Illuminate\Validation\Rule;
 	use Intervention\Image\Facades\Image;
 	use JD\Cloudder\Facades\Cloudder;
 
-
-	class MenusController extends Controller
+	class DishesController extends Controller
 	{
+
+
+
 
 		function messages()
 		{
@@ -30,51 +32,51 @@
 
 		public function index()
 		{
-			$data        = Menu::paginate( config( 'admin.settings.per_page' ) );
-			$data->table = 'menus';
-			$breadcrumbs = '<div class="row wrapper border-bottom white-bg page-heading"><div class="col-lg-12"><h2>Меню</h2><ol class="breadcrumb"><li><a href="/admin">Главная</a></li></ol></div></div>';
-			return view( 'admin.menu.index', [
-				'data'        => $data,
-				'breadcrumbs' => $breadcrumbs, ] );
+
+			$data        = Dishe::paginate(  config('admin.settings.per_page')  );
+			$data->table = 'dishes';
+
+			return view( 'admin.dishes.index', [ 'data' => $data ] );
+
 		}
 
 
 		public function create()
 		{
-			$data        = new Menu();
-			$data->act   = 'admin-menus-store';
-			$data->table = 'menus';
-			$titleAction = '<strong>Создание нового меню</strong>';
+			$data        = new Dishe();
+			$data->act   = 'admin-dishes-store';
+			$data->table = 'dishes';
+			$titleAction = '<strong>Создание нового блюда</strong>';
 
-			$breadcrumbs = '<div class="row wrapper border-bottom white-bg page-heading"><div class="col-lg-12"><h2><i class="fa flaticon-menu-1"></i> Меню</h2><ol 
-class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active"><a href="/admin/menus">Меню</a></li><li>' . $titleAction . '</li></ol></div></div>';
+			$breadcrumbs = '<div class="row wrapper border-bottom white-bg page-heading"><div class="col-lg-12"><h2><i class="fa flaticon-dishe2"></i> Блюда</h2><ol 
+class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active"><a href="/admin/dishes">Блюда</a></li><li>' . $titleAction . '</li></ol></div></div>';
 
-			return view( 'admin.menu.form', [ 'data' => $data, 'breadcrumbs' => $breadcrumbs ] );
+			return view( 'admin.dishes.form', [ 'data' => $data, 'breadcrumbs' => $breadcrumbs ] );
 
 
 		}
+
 
 		public function store( Request $request )
 		{
 
 			$v = \Validator::make( $request->all(), [
-				'name' => 'required|unique:menus|max:255',
-				'alias' => 'required|unique:menus|max:255',
+				'name' => 'required|unique:dishes|max:255',
 			], $this->messages() );
 
 
 			if( $v->fails() ){
-				return redirect( 'admin/menus/create' )
+				return redirect( 'admin/dishes/create' )
 					->withErrors( $v )
 					->withInput();
 			}
 
 
 			$input     = $request->all();
-			$input     = array_except( $input, [ '_token',  'q', 'submit_button_back' ] );
+			$input     = array_except( $input, '_token' );
+			$disheModel = Dishe::create( $input );
+			$id        = $disheModel->id;
 
-			$menuModel = Menu::create( $input );
-			$id        = $menuModel->id;
 
 
 			\Session::flash( 'message', 'Запись добавлена!' );
@@ -82,32 +84,33 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active
 			if( isset( $request->submit_button_stay ) ){
 				return redirect()->back();
 			}
-			return redirect( '/admin/menus' );
+			return redirect( '/admin/dishes' );
 
 
 		}
 
 
+
 		public function edit( $id )
 		{
 
-			$data = Menu::where( 'id', $id )->first();
+			$data = Dishe::where( 'id', $id )->first();
 
 
-			$data->table = 'menus';
-			$data->act   = 'admin-menus-update';
+			$data->table = 'dishes';
+			$data->act   = 'admin-dishes-update';
 			/*$data->icon  = json_decode( $data->icon, true );*/
 
 
 			$breadcrumbs = '<div class="row wrapper border-bottom white-bg page-heading"><div class="col-lg-12"><h2><i 
-class="fa flaticon-menu-1"></i> Меню</h2><ol 
+class="fa flaticon-dishe2"></i> Блюда</h2><ol 
 class="breadcrumb"><li><a href="/admin">Главная</a></li><li 
-class="active"><a href="/admin/menus">Меню</a></li><li>Редактирование <strong>[
+class="active"><a href="/admin/dishes">Блюда</a></li><li>Редактирование <strong>[
  <a href="/' . $data->table . '/' . $data->alias . '" style="color:blue" title="Смотреть на пользовательской части">' . $data->name . ' <img
   src="/_admin/img/extlink.png" alt="" 
  style="margin:0"></a> ]</strong></li></ol></div></div>';
 
-			return view( 'admin.menu.form', [
+			return view( 'admin.dishes.form', [
 				'data'        => $data,
 				'breadcrumbs' => $breadcrumbs,
 			] );
@@ -122,13 +125,13 @@ class="active"><a href="/admin/menus">Меню</a></li><li>Редактиров�
 			$v = \Validator::make( $request->all(), [
 				'name' => [
 					'required',
-					Rule::unique( 'menus' )->ignore( $request->id ),
+					Rule::unique( 'dishes' )->ignore( $request->id ),
 					'max:255',
 				],
 
 				'alias'             => [
 					'required',
-					Rule::unique( 'menus' )->ignore( $request->id ),
+					Rule::unique( 'dishes' )->ignore( $request->id ),
 					'max:255',
 				],
 				/*'description'       => 'required',*/
@@ -139,25 +142,25 @@ class="active"><a href="/admin/menus">Меню</a></li><li>Редактиров�
 
 
 			if( $v->fails() ){
-				return redirect( 'admin/menus/' . $request->id . '/edit' )
+				return redirect( 'admin/dishes/' . $request->id . '/edit' )
 					->withErrors( $v )
 					->withInput();
 			}
 
-			$menu = Menu::find( $request->id );
+			$dishe = Dishe::find( $request->id );
 
 			$input = $request->all();
 
 			$input = array_except( $input, [ '_token', 'submit_button_back' ] );
-			$menu->update( $input );
-			$menu->save();
+			$dishe->update( $input );
+			$dishe->save();
 
 
 			\Session::flash( 'message', 'Запись обновлена!' );
 
 
 			if( $direct == 'back' ){
-				return redirect( url( '/admin/menus' ) );
+				return redirect( url( '/admin/dishes' ) );
 			}
 
 			if( $direct == 'stay' ){
@@ -165,29 +168,5 @@ class="active"><a href="/admin/menus">Меню</a></li><li>Редактиров�
 			}
 		}
 
-
-
-
-		public function detail( Request $request )
-		{
-
-			if( $request->alias ){
-
-				$data = Menu::where( 'alias', '=', $request->alias )->first();
-
-				return view( 'menu.detail', [ 'data' => $data ] );
-
-			}
-
-		}
-
-		public function menu_list()
-		{
-
-			$data = Menu::paginate( 20 );
-
-			return view( 'menu.list', [ 'data' => $data ] );
-
-		}
 
 	}

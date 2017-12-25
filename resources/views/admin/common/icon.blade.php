@@ -1,12 +1,13 @@
 <script src="/_admin/js/plugins/dropzone/dropzone.js"></script>
 <div id="iconLoad" class="icon_dropzone" style="margin-bottom:3px"></div>
 <div id="iconPreview" class="imageWrap">
+	<input type="hidden" name="icon_public_id" value="{{$iconData->icon_public_id or 'null'}}">
 	<div class="controls">
 		<button
 			class="btn btn-danger btn-circle icon-delete"
 			type="button"
 			title="Удалить"
-			data-public_id="{{$iconData->public_id or 'null'}}"
+			data-icon_public_id="{{$iconData->icon_public_id or 'null'}}"
 			data-table="{{$iconData->table or 'null'}}"
 			data-id="{{$iconData->id or 'null'}}"
 		><i class="fa fa-trash fa-lg"></i></button>
@@ -19,6 +20,7 @@
 	.imageWrap {
 		position: relative;
 		}
+	
 	.imageWrap .controls {
 		position:           absolute;
 		left:               10px;
@@ -32,19 +34,31 @@
 		-o-transition:      all 0.5s ease;
 		transition:         all 0.5s ease;
 		}
+	
 	.imageWrap .controls button {
 		box-shadow: 3px 3px 6px #232323;
 		border:     1px #ff2850 solid;
 		}
+	
 	.imageWrap:hover .controls {
 		top:     10px;
 		opacity: 1.0;
 		}
+	
 	.wait {
-		color:      #0c00fc;
+		position:   absolute;
+		top:        0;
+		left:       0;
+		width:      100%;
+		height:     100%;
+		z-index:    9999;
+		color:      #0a5400;
 		font-size:  20px;
-		text-align: center
+		text-align: center;
+		background: rgba(255, 255, 255, 0.3);
+		padding:    10px 5px;
 		}
+	
 	.blure {
 		filter: blur(3px);
 		}
@@ -52,7 +66,7 @@
 <script>
 	var paramsData = {
 		table : $( "[name='table']" ).val(),
-		id    : '{{$iconData->id or "0"}}',
+		id    : '{{$iconData->id or "null"}}',
 		_token: '{{csrf_token()}}'
 
 	};
@@ -71,12 +85,21 @@
 		acceptedFiles        : "image/*",
 		dictDefaultMessage   : "Бросьте изображение сюда.<br>Или кликните здесь.",
 		thumbnail            : function( file, dataUrl ){
-			$( "#iconPreview img.img-thumbnail" ).attr( 'src', dataUrl ).addClass( 'animated fadeIn blure' ).append( '<div class="wait">Идёт загрузка...</div>' );
+			$( "#iconPreview img.img-thumbnail" ).attr( 'src', dataUrl ).addClass( 'animated fadeIn blure' );
+			$( "#iconPreview" ).prepend( '<div class="wait"><i class="fa fa-cloud-upload"></i> Идёт загрузка... </div>' );
 
 		},
 		success              : function( file, msg ){
 			var res = jQuery.parseJSON( msg );
 			var newUrl = res.url;
+			/* Если это добавление новой записи  */
+			if( res.publicId !== 'null' ){
+				console.log( res.publicId )
+				$( "[name='icon_public_id']" ).val( res.publicId );
+				/*$( "#iconPreview" ).prepend( '<input type="hidden" name="icon_public_id" value="' + res.tmpId + '" >' );*/
+
+
+			}
 			$( "#iconPreview img" ).attr( { 'src': newUrl } ).addClass( 'animated fadeIn' ).removeClass( 'blure' );
 			$( "#iconPreview div.wait" ).addClass( 'animated fadeOut' );
 		}
@@ -94,10 +117,10 @@
 			method : "POST",
 			url    : "/icondelete",
 			data   : {
-				table    : table,
-				id       : id,
-				public_id: public_id,
-				_token   : '{{csrf_token()}}'
+				table         : table,
+				id            : id,
+				icon_public_id: icon_public_id,
+				_token        : '{{csrf_token()}}'
 			},
 			success: function( msg ){
 				var res = jQuery.parseJSON( msg );

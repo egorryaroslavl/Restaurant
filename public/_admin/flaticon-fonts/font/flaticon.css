@@ -1,138 +1,74 @@
-/*
-  Flaticon icon font: Flaticon
-  Creation date: 15/12/2017 15:55
-  */
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 23/12/2017 16:27
+  	*/
 
 @font-face {
-	font-family: "Flaticon";
-	src:         url("./Flaticon.eot");
-	src:         url("./Flaticon.eot?#iefix") format("embedded-opentype"),
-				 url("./Flaticon.woff") format("woff"),
-				 url("./Flaticon.ttf") format("truetype"),
-				 url("./Flaticon.svg#Flaticon") format("svg");
-	font-weight: normal;
-	font-style:  normal;
-	}
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-	@font-face {
-		font-family: "Flaticon";
-		src:         url("./Flaticon.svg#Flaticon") format("svg");
-		}
-	}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
 
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
 
-	display:                 inline-block;
-	font:                    normal normal normal 18px/1 Flaticon;
-	font-size:               inherit;
-	text-rendering:          auto;
-	-webkit-font-smoothing:  antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	transform:               translate(0, 0);
-	}
+  display:                 inline-block;
+  font:                    normal normal normal 18px/1 Flaticon;
+  font-size:               inherit;
+  text-rendering:          auto;
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform:               translate(0, 0);
+  }
 
-.flaticon-bar:before {
-	content: "\f100";
-	}
-
-.flaticon-food-7:before {
-	content: "\f101";
-	}
-
-.flaticon-food-6:before {
-	content: "\f102";
-	}
-
-.flaticon-food-5:before {
-	content: "\f103";
-	}
-
-.flaticon-food-4:before {
-	content: "\f104";
-	}
-
-.flaticon-party:before {
-	content: "\f105";
-	}
-
-.flaticon-food-3:before {
-	content: "\f106";
-	}
-
-.flaticon-cake:before {
-	content: "\f107";
-	}
-
-.flaticon-restaurant-eating-tools-set-of-three-pieces:before {
-	content: "\f108";
-	}
-
-.flaticon-book:before {
-	content: "\f109";
-	}
-
-.flaticon-menu-4:before {
-	content: "\f10a";
-	}
-
-.flaticon-drink:before {
-	content: "\f10b";
-	}
-
-.flaticon-transport:before {
-	content: "\f10c";
-	}
-
-.flaticon-location:before {
-	content: "\f10d";
-	}
-
-.flaticon-food:before {
-	content: "\f10e";
-	}
-
-.flaticon-food-2:before {
-	content: "\f10f";
-	}
-
-.flaticon-food-1:before {
-	content: "\f110";
-	}
-
-.flaticon-harvest:before {
-	content: "\f111";
-	}
-
-.flaticon-cocktail:before {
-	content: "\f112";
-	}
-
-.flaticon-cooking:before {
-	content: "\f113";
-	}
-
-.flaticon-serve:before {
-	content: "\f114";
-	}
-
-.flaticon-chef:before {
-	content: "\f115";
-	}
-
-.flaticon-menu-3:before {
-	content: "\f116";
-	}
-
-.flaticon-menu-2:before {
-	content: "\f117";
-	}
-
-.flaticon-menu-1:before {
-	content: "\f118";
-	}
-
-.flaticon-menu:before {
-	content: "\f119";
-	}
+.flaticon-cafe:before { content: "\f100"; }
+.flaticon-add-event:before { content: "\f101"; }
+.flaticon-calendar:before { content: "\f102"; }
+.flaticon-fireworks-on-event-day-reminder-calendar-page-of-interface:before { content: "\f103"; }
+.flaticon-election-event-on-a-calendar-with-star-symbol:before { content: "\f104"; }
+.flaticon-reservation:before { content: "\f105"; }
+.flaticon-food-delivery:before { content: "\f106"; }
+.flaticon-order-food:before { content: "\f107"; }
+.flaticon-menu-2:before { content: "\f108"; }
+.flaticon-covered-food-tray-on-a-hand-of-hotel-room-service:before { content: "\f109"; }
+.flaticon-ingredients:before { content: "\f10a"; }
+.flaticon-add-ingredients:before { content: "\f10b"; }
+.flaticon-dishe1:before { content: "\f10c"; }
+.flaticon-dishe2:before { content: "\f10d"; }
+.flaticon-bar:before { content: "\f10e"; }
+.flaticon-food:before { content: "\f10f"; }
+.flaticon-glass-of-vine:before { content: "\f110"; }
+.flaticon-bottle-of-vine:before { content: "\f111"; }
+.flaticon-party:before { content: "\f112"; }
+.flaticon-cutlery:before { content: "\f113"; }
+.flaticon-cake-1:before { content: "\f114"; }
+.flaticon-restaurant-eating-tools-set-of-three-pieces:before { content: "\f115"; }
+.flaticon-menu0:before { content: "\f116"; }
+.flaticon-menu-1:before { content: "\f117"; }
+.flaticon-drink:before { content: "\f118"; }
+.flaticon-transport:before { content: "\f119"; }
+.flaticon-location:before { content: "\f11a"; }
+.flaticon-glass-of-vine-o:before { content: "\f11b"; }
+.flaticon-food-o:before { content: "\f11c"; }
+.flaticon-cake:before { content: "\f11d"; }
+.flaticon-harvest:before { content: "\f11e"; }
+.flaticon-cocktail:before { content: "\f11f"; }
+.flaticon-cooking:before { content: "\f120"; }
+.flaticon-serve:before { content: "\f121"; }
+.flaticon-chef:before { content: "\f122"; }
+.flaticon-menu:before { content: "\f123"; }
+.flaticon-menu-0:before { content: "\f124"; }
+.flaticon-menu1:before { content: "\f125"; }
+.flaticon-point-in-menu:before { content: "\f126"; }

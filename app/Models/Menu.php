@@ -18,7 +18,8 @@
 			'pos',
 			'public',
 			'anons',
-			'icon',
+			'icon_id',
+			'icon_public_id',
 			'hit',
 			'h1',
 			'metatag_title',
@@ -48,11 +49,7 @@
 		public function thumbnail()
 		{
 
-
-			return	$this->icon();
-
-
-
+			return $this->icon();
 
 		}
 	}

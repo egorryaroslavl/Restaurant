@@ -7,9 +7,16 @@ $( function(){
 	var token = $( "[name='_token']" ).val();
 
 	if( iconPlace.length > 0 ){
-		iconPlace.load( '/iconload', { table: table, id: id, icon_public_id:icon_public_id, _token: token } );
+		iconPlace.load( '/iconload', {
+			table         : table,
+			id            : id,
+			icon_public_id: icon_public_id,
+			_token        : token
+		}, function(){
+		} );
 	}
 
 
 } );
+
 

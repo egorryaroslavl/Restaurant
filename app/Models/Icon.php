@@ -29,4 +29,10 @@
 		{
 			return $this->belongsTo( 'App\Models\Menu', 'parent_id' );
 		}
+
+		public function dishe()
+		{
+			return $this->belongsTo( 'App\Models\Dishe', 'parent_id' );
+		}
+
 	}
