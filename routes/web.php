@@ -25,20 +25,23 @@
 		Route::post( 'admin/menus/store', 'MenusController@store' )->name( 'admin-menus-store' );
 		Route::post( 'admin/menus/update', 'MenusController@update' )->name( 'admin-menus-update' );
 
+		Route::post( 'admin/notconsists_dishes', 'MenusController@dishesList' )->name( 'admin-notconsists-dishes' );
+		Route::post( 'admin/yetconsists_dishes', 'MenusController@dishesList' )->name( 'admin-yetconsists-dishes' );
+		Route::post( 'admin/dishes_control', 'MenusController@dishesControl' )->name( 'admin-dishes-control' );
+
 		/*DISHES*/
 		Route::get( 'admin/dishes', 'DishesController@index' )->name( 'admin-dishes' );
 		Route::get( 'admin/dishes/create', 'DishesController@create' )->name( 'admin-dishes-create' );
 		Route::post( 'admin/dishes/store', 'DishesController@store' )->name( 'admin-dishes-store' );
 		Route::post( 'admin/dishes/update', 'DishesController@update' )->name( 'admin-dishes-update' );
 		Route::get( 'admin/dishes/{id}/edit', 'DishesController@edit' )->name( 'admin-dishes-edit' );
-
+		Route::post( 'admin/dishes_reorder', 'DishesController@dishes_reorder' )->name( 'admin-dishes_reorder' );
 
 		/*ICONS*/
 		Route::any( 'iconload', 'IconController@load' )->name( 'iconload' );
 		Route::any( 'iconsave', 'IconController@save' )->name( 'iconsave' );
 		Route::get( 'iconget', 'MenusController@iconget' )->name( 'iconget' );
 		Route::any( 'icondelete', 'IconController@delete' )->name( 'icondelete' );
-
 
 
 		Route::post( 'admin/related', 'AdminController@related' );

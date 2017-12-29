@@ -17,15 +17,16 @@
 					<div class="hr-line-dashed"></div>
 					@include('admin.common.icon_description_short_description')
 					<div class="hr-line-dashed"></div>
-					@include('admin.common.public_anons_hit')
+					@include('admin.menu.menu_consists_list')
 					<div class="hr-line-dashed"></div>
 					@include('admin.common.relations_multiselect')
+					<div class="hr-line-dashed"></div>
+					@include('admin.common.public_anons_hit')
 				</div>
 			</div>
 			<div id="tab-2" class="tab-pane">
 				<div class="panel-body">
 					@include('admin.common.metatag_title_metatag_description_metatag_keywords')
-				
 				</div>
 			</div>
 		</div>

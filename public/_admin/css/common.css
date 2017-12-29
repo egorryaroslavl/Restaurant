@@ -1,4 +1,5 @@
 @import "../flaticon-fonts/font/flaticon.css";
+
 .visually-hidden {
 	position: absolute !important;
 	width:    1px;
@@ -75,12 +76,14 @@ td.reorder:hover {
 	display:       block;
 	z-index:       10;
 	}
-.icon_dropzone{
+
+.icon_dropzone {
 	background:      url(/_admin/img/drag-drop-uploader.png) 50% 50% no-repeat;
 	background-size: contain;
 	min-height:      60px;
-	border: 1px #ccc dotted;
+	border:          1px #ccc dotted;
 	}
+
 #icon-place {
 	background:      url('/_admin/img/upload-icon.png') 50% 50% no-repeat;
 	background-size: contain;
@@ -142,6 +145,7 @@ label small {
 .iconMenu span {
 	margin-left: 10px;
 	}
+
 .thumbnail_20x20 {
 	display:             inline-block;
 	width:               20px;
@@ -153,13 +157,18 @@ label small {
 	background-repeat:   no-repeat;
 	background-size:     cover;
 	}
-.relatedList{max-height: 16.0rem}
+
+.relatedList {
+	max-height: 16.0rem
+	}
+
 .relatedList option {
 	padding:       5px 10px;
 	background:    #ededed;
 	margin-bottom: 2px;
 	cursor:        pointer;
 	}
+
 .relatedList option:hover {
 	background: #fff392;
 	cursor:     pointer;
@@ -173,11 +182,35 @@ label small {
 	background: #fff392;
 	cursor:     pointer;
 	}
+
 .sk-spinner-rotating-plane.sk-spinner {
-	width: 300px;
-	height: 300px;
-	background-color: #1ab394;
-	margin: 0 auto;
+	width:             300px;
+	height:            300px;
+	background-color:  #1ab394;
+	margin:            0 auto;
 	-webkit-animation: sk-rotatePlane 10.2s infinite ease-in-out;
-	animation: sk-rotatePlane 10.2s infinite ease-in-out;
+	animation:         sk-rotatePlane 10.2s infinite ease-in-out;
+	}
+
+/* DISHES TABLE  */
+.clients-list .tab-pane {
+	position: relative;
+	height:   auto;
+	}
+
+.dishes-table tr:nth-child(even) {
+	background: #f0f0f0;
+	}
+
+.dishes-table tr:nth-child(even):hover, .dishes-table tr:nth-child(odd):hover {
+	background: rgba(207, 255, 0, 0.3);
+	}
+
+.dishes-reorder {
+	width:           5.0rem;
+	height:          100%;
+	display:         block;
+	float:           right !important;
+	background:      rgba(255, 129, 0, 0.50) url(/_admin/img/reorder-64x64.png) 50% 50% no-repeat;
+	background-size: 60%;
 	}

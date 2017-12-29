@@ -14,6 +14,19 @@
 	{
 
 
+		public static function iconThumbnail( $public_id )
+		{
+			$thumbParams = [ "width"         => 150, "height" => 150, "crop" => "fill",
+			                 'default_image' => 'no-image_rn9n3d.png' ];
+
+			$url = Cloudder::show( $public_id, $thumbParams );
+
+			return $url != '' ? $url : '/images/no-image.png';
+
+
+		}
+
+
 		public static function thumbnail( $public_id )
 		{
 			$thumbParams = [ "width"      => 20, "height" => 20, "crop" => "fit",
@@ -39,7 +52,7 @@
 		public static function randId()
 		{
 
-			return str_replace( '.', '', uniqid( '', true )  );
+			return str_replace( '.', '', uniqid( '', true ) );
 
 		}
 
@@ -60,6 +73,24 @@
 
 		}
 
+		public static function prev_next( $data, $id, $routeName )
+		{
+			$next = $data::where( 'id', '>', $id )->first();
+			$prev = $data::where( 'id', '<', $id )->first();
+
+			$nextLnk = '<a href="#" disabled="disabled" title="Пусто..." style="cursor:no-drop;opacity:0.5"><i class="fa fa-ban"></i></a>  ';
+			if( $next !== null ){
+				$nextLnk = '<a href="' . route( $routeName, $next ) . '" title="' . $next->name . '"><i class="fa fa-angle-right"></i> </a>  ';
+			}
+			$prevLnk = '<a href="#" disabled="disabled" title="Пусто..." style="cursor:no-drop;opacity:0.5"><i class="fa fa-ban"></i></a>  ';
+			if( $prev !== null ){
+				$prevLnk = '<a href="' . route( $routeName, $prev ) . '" title="' . $prev->name . '"><i class="fa fa-angle-left"></i></a>  ';
+			}
+
+
+			return $prevLnk . $nextLnk;
+
+		}
 
 		public static function ruDate( $date )
 		{
@@ -164,5 +195,6 @@
 			$string     = mb_strtolower( strtr( strip_tags( trim( $string ) ), $dictionary ) );
 			return preg_replace( '/[_]+/', '_', $string );
 		}
+
 
 	}

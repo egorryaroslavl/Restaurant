@@ -49,7 +49,6 @@
 		}
 	}
 
-
 	if( !function_exists( 'thumbnail' ) ){
 		/**
 		 * @param $public_id
@@ -62,6 +61,17 @@
 		}
 	}
 
+	if( !function_exists( 'iconThumbnail' ) ){
+		/**
+		 * @param $public_id
+		 *
+		 * @return string
+		 */
+		function iconThumbnail( $public_id )
+		{
+			return \App\Http\Controllers\CustomHelpers::iconThumbnail( $public_id );
+		}
+	}
 
 	if( !function_exists( 'randId' ) ){
 		/**
@@ -69,9 +79,17 @@
 		 *
 		 * @return string
 		 */
-		function randId(  )
+		function randId()
 		{
-			return \App\Http\Controllers\CustomHelpers::randId( );
+			return \App\Http\Controllers\CustomHelpers::randId();
 		}
 	}
 
+
+	if( !function_exists( 'prev_next' ) ){
+
+		function prev_next( $data, $id, $routeName )
+		{
+			return \App\Http\Controllers\CustomHelpers::prev_next( $data, $id, $routeName );
+		}
+	}

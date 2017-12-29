@@ -16,6 +16,13 @@
 					@include('admin.common.name_alias')
 					<div class="hr-line-dashed"></div>
 					@include('admin.common.icon_description_short_description')
+				 
+					<div class="row">
+						<div class="col-xs-3 col-xs-offset-3">
+							{{Form::label('price','Цена')}}
+							{{Form::text('price',$data->price,['class'=>'form-control','id'=>'price', ])}}
+						</div>
+					</div>
 					<div class="hr-line-dashed"></div>
 					@include('admin.common.public_anons_hit')
 					<div class="hr-line-dashed"></div>

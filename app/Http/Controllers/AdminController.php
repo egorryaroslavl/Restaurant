@@ -82,4 +82,27 @@
 		}
 
 
+		public function reorder( Request $request )
+		{
+
+
+			if( isset( $request->sort_data ) ){
+
+				$id        = array();
+				$table     = $request->table;
+				$sort_data = $request->sort_data;
+
+				parse_str( $sort_data );
+
+				$count = count( $id );
+				for( $i = 0; $i < $count; $i++ ){
+					\DB::update( 'UPDATE `' . $table . '` SET `pos`=' . $i . ' WHERE `id`=? ', [ $id[ $i ] ] );
+
+				}
+
+
+			}
+		}
+
+
 	}

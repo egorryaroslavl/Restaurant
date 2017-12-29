@@ -12,8 +12,6 @@
 	{
 
 
-
-
 		function messages()
 		{
 			$strLimit = config( 'admin.settings.text_limit.text_short_description.', 600 );
@@ -33,7 +31,7 @@
 		public function index()
 		{
 
-			$data        = Dishe::paginate(  config('admin.settings.per_page')  );
+			$data        = Dishe::paginate( config( 'admin.settings.per_page' ) );
 			$data->table = 'dishes';
 
 			return view( 'admin.dishes.index', [ 'data' => $data ] );
@@ -72,11 +70,10 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active
 			}
 
 
-			$input     = $request->all();
-			$input     = array_except( $input, '_token' );
+			$input      = $request->all();
+			$input      = array_except( $input, '_token' );
 			$disheModel = Dishe::create( $input );
-			$id        = $disheModel->id;
-
+			$id         = $disheModel->id;
 
 
 			\Session::flash( 'message', 'Запись добавлена!' );
@@ -90,13 +87,10 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active
 		}
 
 
-
 		public function edit( $id )
 		{
 
 			$data = Dishe::where( 'id', $id )->first();
-
-
 			$data->table = 'dishes';
 			$data->act   = 'admin-dishes-update';
 			/*$data->icon  = json_decode( $data->icon, true );*/
@@ -166,6 +160,30 @@ class="active"><a href="/admin/dishes">Блюда</a></li><li>Редактиро
 			if( $direct == 'stay' ){
 				return redirect()->back();
 			}
+		}
+
+		public function dishes_reorder( Request $request )
+		{
+
+
+			if( isset( $request->sort_data ) ){
+
+				$id        = array();
+				$table     = $request->table;
+				$sort_data = $request->sort_data;
+
+				parse_str( $sort_data );
+
+				$count = count( $id );
+				for( $i = 0; $i < $count; $i++ ){
+					\DB::update( 'UPDATE `' . $table . '` SET `pos`=' . $i . ' WHERE `dishe_id`=? AND `menu_id`=? ', [ $id[ $i ] ,  $request->id ] );
+
+				}
+
+				return 'true';
+			}
+
+			return 'false';
 		}
 
 

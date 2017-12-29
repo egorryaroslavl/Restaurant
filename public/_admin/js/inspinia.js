@@ -75,6 +75,13 @@ $(document).ready(function () {
         wheelStep: 10
     });
 
+
+	$('.menu-dishes-scroll').slimScroll({
+		height: '250px',
+		railOpacity: 1.0,
+		wheelStep: 10
+	});
+
     // Open close small chat
     $('.open-small-chat').on('click', function () {
         $(this).children().toggleClass('fa-comments').toggleClass('fa-remove');

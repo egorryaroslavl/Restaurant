@@ -1,6 +1,6 @@
 @extends('layouts.themes.semper.index')
 @section('content')
-	{{--	{{dd($data)}}--}}
+		{{--{{dd($data)}}--}}
 	
 	@if(count($data)>0)
  
@@ -28,12 +28,12 @@
 					</div>
 				</div>
 				<div class="row food-menu-list">
-					@foreach($data as $item)
+					@foreach($data->dishes as $item)
 					<div class="mix col-md-6 col-lg-6 col-sm-12 col-xs-12 single-menu {{$item->alias}}">
 						<div class="single-menu-details">
-							<div class="food-menu-img"><img src="img/menu/menu_style_two_1.jpg" alt=""></div>
+							<div class="food-menu-img"><img src="{!! iconThumbnail($item->icon_public_id )!!}"  alt=""></div>
 							<div class="food-menu-details">
-								<h3>Cupcake Recipes <span class="menu-price">$20.00</span></h3>
+								<h3>{{$item->name}} <span class="menu-price">{{$item->price or '--'}}&#8381;</span></h3>
 								<p class="menu-speacification"><span>- Juice Fruit</span> <span>- Checken</span>
 									<span>- Cherry</span></p>
 								<p class="menu-speacification"><span>- Vegetable</span> <span>- Milk</span>
@@ -44,78 +44,7 @@
 						</div>
 					</div>
 					@endforeach
-					
-					
-					<div class="mix col-md-6 col-lg-6 col-sm-12 col-xs-12 single-menu dinner snacks">
-						<div class="single-menu-details">
-							<div class="food-menu-img"><img src="img/menu/menu_style_two_2.jpg" alt=""></div>
-							<div class="food-menu-details">
-								<h3>Cupcake Recipes <span class="menu-price">$22.00</span></h3>
-								<p class="menu-speacification"><span>- Juice Fruit</span> <span>- Checken</span>
-									<span>- Cherry</span></p>
-								<p class="menu-speacification"><span>- Vegetable</span> <span>- Milk</span>
-									<span>- Potato</span></p>
-								<p class="menu-speacification"><span>- Tomato</span> <span>- Chilli</span>
-									<span>- Sesame</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="mix col-md-6 col-lg-6 col-sm-12 col-xs-12 single-menu breakfast">
-						<div class="single-menu-details">
-							<div class="food-menu-img"><img src="img/menu/menu_style_two_3.jpg" alt=""></div>
-							<div class="food-menu-details">
-								<h3>Cupcake Recipes <span class="menu-price">$17.00</span></h3>
-								<p class="menu-speacification"><span>- Juice Fruit</span> <span>- Checken</span>
-									<span>- Cherry</span></p>
-								<p class="menu-speacification"><span>- Vegetable</span> <span>- Milk</span>
-									<span>- Potato</span></p>
-								<p class="menu-speacification"><span>- Tomato</span> <span>- Chilli</span>
-									<span>- Sesame</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="mix col-md-6 col-lg-6 col-sm-12 col-xs-12 single-menu dinner lunch breakfast snacks">
-						<div class="single-menu-details">
-							<div class="food-menu-img"><img src="img/menu/menu_style_two_4.jpg" alt=""></div>
-							<div class="food-menu-details">
-								<h3>Cupcake Recipes <span class="menu-price">$28.00</span></h3>
-								<p class="menu-speacification"><span>- Juice Fruit</span> <span>- Checken</span>
-									<span>- Cherry</span></p>
-								<p class="menu-speacification"><span>- Vegetable</span> <span>- Milk</span>
-									<span>- Potato</span></p>
-								<p class="menu-speacification"><span>- Tomato</span> <span>- Chilli</span>
-									<span>- Sesame</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="mix col-md-6 col-lg-6 col-sm-12 col-xs-12 single-menu lunch coffee">
-						<div class="single-menu-details">
-							<div class="food-menu-img"><img src="img/menu/menu_style_two_5.jpg" alt=""></div>
-							<div class="food-menu-details">
-								<h3>Cupcake Recipes <span class="menu-price">$120.00</span></h3>
-								<p class="menu-speacification"><span>- Juice Fruit</span> <span>- Checken</span>
-									<span>- Cherry</span></p>
-								<p class="menu-speacification"><span>- Vegetable</span> <span>- Milk</span>
-									<span>- Potato</span></p>
-								<p class="menu-speacification"><span>- Tomato</span> <span>- Chilli</span>
-									<span>- Sesame</span></p>
-							</div>
-						</div>
-					</div>
-					<div class="mix col-md-6 col-lg-6 col-sm-12 col-xs-12 single-menu breakfast">
-						<div class="single-menu-details">
-							<div class="food-menu-img"><img src="img/menu/menu_style_two_6.jpg" alt=""></div>
-							<div class="food-menu-details">
-								<h3>Cupcake Recipes <span class="menu-price">$100.00</span></h3>
-								<p class="menu-speacification"><span>- Juice Fruit</span> <span>- Checken</span>
-									<span>- Cherry</span></p>
-								<p class="menu-speacification"><span>- Vegetable</span> <span>- Milk</span>
-									<span>- Potato</span></p>
-								<p class="menu-speacification"><span>- Tomato</span> <span>- Chilli</span>
-									<span>- Sesame</span></p>
-							</div>
-						</div>
-					</div>
+ 
 				</div>
 				
 				<div class="row">

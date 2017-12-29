@@ -2,9 +2,11 @@
 
 	namespace App\Http\Controllers;
 
+	use App\Models\Dishe;
+	use App\Models\DishesMenu;
 	use App\Models\Menu;
 	use Illuminate\Http\Request;
-	use Illuminate\Validation\Rule;
+	use Illuminate\Support\Facades\Route;
 	use Intervention\Image\Facades\Image;
 	use JD\Cloudder\Facades\Cloudder;
 
@@ -58,7 +60,7 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active
 		{
 
 			$v = \Validator::make( $request->all(), [
-				'name' => 'required|unique:menus|max:255',
+				'name'  => 'required|unique:menus|max:255',
 				'alias' => 'required|unique:menus|max:255',
 			], $this->messages() );
 
@@ -70,8 +72,8 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active
 			}
 
 
-			$input     = $request->all();
-			$input     = array_except( $input, [ '_token',  'q', 'submit_button_back' ] );
+			$input = $request->all();
+			$input = array_except( $input, [ '_token', 'q', 'submit_button_back' ] );
 
 			$menuModel = Menu::create( $input );
 			$id        = $menuModel->id;
@@ -96,8 +98,6 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active
 
 			$data->table = 'menus';
 			$data->act   = 'admin-menus-update';
-			/*$data->icon  = json_decode( $data->icon, true );*/
-
 
 			$breadcrumbs = '<div class="row wrapper border-bottom white-bg page-heading"><div class="col-lg-12"><h2><i 
 class="fa flaticon-menu-1"></i> Меню</h2><ol 
@@ -105,7 +105,7 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li
 class="active"><a href="/admin/menus">Меню</a></li><li>Редактирование <strong>[
  <a href="/' . $data->table . '/' . $data->alias . '" style="color:blue" title="Смотреть на пользовательской части">' . $data->name . ' <img
   src="/_admin/img/extlink.png" alt="" 
- style="margin:0"></a> ]</strong></li></ol></div></div>';
+ style="margin:0"></a> ]</strong>  ' . prev_next( $data, $id, 'admin-menus-edit' ) . '</li></ol></div></div>';
 
 			return view( 'admin.menu.form', [
 				'data'        => $data,
@@ -166,8 +166,6 @@ class="active"><a href="/admin/menus">Меню</a></li><li>Редактиров�
 		}
 
 
-
-
 		public function detail( Request $request )
 		{
 
@@ -183,11 +181,93 @@ class="active"><a href="/admin/menus">Меню</a></li><li>Редактиров�
 
 		public function menu_list()
 		{
+			//dishes_ingredients
+			$data   = Menu::paginate( 20 );
+			$dishes = Dishe::where( 'public', '=', 1 )->get();
 
-			$data = Menu::paginate( 20 );
-
+			$data->dishes = $dishes;
 			return view( 'menu.list', [ 'data' => $data ] );
 
+		}
+
+
+		public function dishesList( Request $request )
+		{
+
+			$routeName = Route::currentRouteName();
+
+			if( $routeName === 'admin-yetconsists-dishes' ){
+
+
+				$sql  = "SELECT `dishe_id`, `pos`,
+(select `id` from `dishes` where dishes.id = dishes_menus.dishe_id) as id,
+(select `name` from `dishes` where dishes.id = dishes_menus.dishe_id) as name,
+(select `alias` from `dishes` where dishes.id = dishes_menus.dishe_id) as alias,
+(select `icon_public_id` from `dishes` where dishes.id = dishes_menus.dishe_id) as icon_public_id,
+(select `description` from `dishes` where dishes.id = dishes_menus.dishe_id) as description,
+(select `short_description` from `dishes` where dishes.id = dishes_menus.dishe_id) as short_description,
+(select `price` from `dishes` where dishes.id = dishes_menus.dishe_id) as price,
+(select `public` from `dishes` where dishes.id = dishes_menus.dishe_id) as public,
+(select `anons` from `dishes` where dishes.id = dishes_menus.dishe_id) as anons,
+(select `hit` from `dishes` where dishes.id = dishes_menus.dishe_id) as  hit,
+(select `h1` from `dishes` where dishes.id = dishes_menus.dishe_id) as h1,
+(select `price` from `dishes` where dishes.id = dishes_menus.dishe_id) as price 
+FROM `dishes_menus` WHERE `menu_id`={$request->id} ORDER BY `pos` ASC";
+				$data = \DB::select( $sql );
+
+
+			}
+
+			if( $routeName === 'admin-notconsists-dishes' ){
+
+				$sql0 = "SELECT * FROM `dishes` where `id` NOT in (SELECT `dishe_id` FROM `dishes_menus` WHERE `menu_id` ={$request->id})";
+				$data = \DB::select( $sql0 );
+
+			}
+
+			//	$data->table = $request->table;
+
+
+			return view( 'admin.common.dishes_list', [ 'data' => (object )$data, 'route' => $routeName ] );
+
+
+		}
+
+
+		public function dishesControl( Request $request )
+		{
+
+			// admin-notconsists-dishes
+			// admin-yetconsists-dishes
+
+			if( $request->route === 'admin-notconsists-dishes' ){
+
+				$dishesMenu = DishesMenu::firstOrCreate(
+					[ 'dishe_id' => $request->dishe_id, 'menu_id' => $request->menu_id ]
+
+				);
+
+
+				\DB::table( 'dishes_menus' )
+					->where( [
+						[ 'dishe_id' ,'=', $request->dishe_id ],
+						[ 'menu_id' ,'=',  $request->menu_id ],
+					] )
+					->increment( 'pos' );
+				return json_encode( [ 'error' => 'ok', 'message' => $dishesMenu->id ] );
+
+			}
+
+			if( $request->route === 'admin-yetconsists-dishes' ){
+
+				$dishesMenu = DishesMenu::where( [
+					[ 'dishe_id', '=', $request->dishe_id ],
+					[ 'menu_id', '=', $request->menu_id ],
+				] )->delete();
+
+				return json_encode( [ 'error' => 'ok', 'message' => $dishesMenu ] );
+
+			}
 		}
 
 	}

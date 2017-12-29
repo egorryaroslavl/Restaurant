@@ -36,13 +36,18 @@
 		public $thumb;
 
 
+		public function dishes()
+		{
+			return $this->belongsToMany( '\App\Models\Dishe', 'dishes_menus' );
+
+		}
+
+
 		public function icon()
 		{
 			$thumb = $this->hasOne( 'App\Models\Icon', 'parent_id', 'id' )->where( 'parent_table', '=', 'menus' );
 
-
 			return $thumb;
-
 
 		}
 
