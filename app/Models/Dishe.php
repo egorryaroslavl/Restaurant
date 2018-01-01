@@ -53,10 +53,13 @@
 
 		}
 
-		public function thumbnail()
+		public static function announced()
 		{
 
-			return $this->icon();
+			return self::where( [
+				[ 'public', '=', 1 ],
+				[ 'anons', '=', 1 ],
+			] )->get();
 
 		}
 

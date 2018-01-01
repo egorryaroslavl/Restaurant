@@ -27,7 +27,7 @@
 			'metatag_keywords' ];
 
 		protected $casts = [
-		/*	'icon'   => 'array',*/
+			/*	'icon'   => 'array',*/
 			'public' => 'boolean',
 			'anons'  => 'boolean',
 			'hit'    => 'boolean',
@@ -38,8 +38,7 @@
 
 		public function dishes()
 		{
-			return $this->belongsToMany( '\App\Models\Dishe', 'dishes_menus' );
-
+				return $this->belongsToMany( '\App\Models\Dishe', 'dishes_menus' )->withPivot( 'pos')->orderBy('dishes_menus.pos');
 		}
 
 
@@ -54,11 +53,9 @@
 		public static function menus()
 		{
 
-			return self::all()->where('public','=',1);
+			return self::all()->where( 'public', '=', 1 );
 
 		}
-
-
 
 
 	}

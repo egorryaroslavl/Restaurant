@@ -1,7 +1,8 @@
 @extends('layouts.index')
 @section('content')
 <!--MENUS AREA-->
-<section class="style-two home-three menus-area section-padding">
+@include('')
+{{--<section class="style-two home-three menus-area section-padding">
 	<div class="container wow fadeIn">
 		<div class="row">
 			<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -104,6 +105,6 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section>--}}
 <!--MENUS AREA END-->
 @endsection

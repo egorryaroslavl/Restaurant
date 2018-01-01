@@ -1,7 +1,7 @@
 <div class="row food-menu-list">
 	@php
 		$Collection = collect($data->dishes);
-	$dishes = $Collection->sortBy('pos');
+		$dishes = $Collection->sortBy('pos');
 	@endphp
 	@foreach($dishes as $item)
 		

@@ -110,8 +110,6 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active
 		{
 
 			$data = Menu::where( 'id', $id )->first();
-
-
 			$data->table = 'menus';
 			$data->act   = 'admin-menus-update';
 
