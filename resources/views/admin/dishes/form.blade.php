@@ -16,13 +16,88 @@
 					@include('admin.common.name_alias')
 					<div class="hr-line-dashed"></div>
 					@include('admin.common.icon_description_short_description')
-				 
+					
 					<div class="row">
 						<div class="col-xs-3 col-xs-offset-3">
 							{{Form::label('price','Цена')}}
 							{{Form::text('price',$data->price,['class'=>'form-control','id'=>'price', ])}}
 						</div>
+						
+						<div class="col-xs-6">
+							{{Form::label('ingr','Ингридиенты')}}
+							{{Form::text('ingr','',['class'=>'form-control','id'=>'ingr', ])}}
+						
+						</div>
+						<style>
+							
+							#ingredientsList {
+								padding-top: 5px;
+								}
+							
+							.ingredientsItem {
+								
+								margin-bottom: 5px;
+								margin-right:  5px;
+								cursor:        default;
+								
+								}
+							
+							.ingredientsItem i {
+								cursor: pointer;
+								}
+							
+							.ing-delete {
+								margin-right: 5px;
+								cursor:       pointer;
+								}
+						</style>
+						
+						<script>
+							$( "body" ).on( "keydown", "#ingr", function( e ){
+
+								var ingr = $( this ).val();
+
+								if( e.keyCode == 13 ){
+									e.preventDefault();
+									if( $.trim( ingr ) !== '' ){
+
+										$( "#ingredientsList" ).append( '<div class="btn btn-success btn-xs ingredientsItem"><i class="fa fa-times" onclick="$(this).parent().remove();"></i>&nbsp;&nbsp;<span class="ingr">' + ingr + '</span><input type="hidden" name="ingredients[]" value="' + ingr + '"></div>' );
+										$( this ).val( '' )
+
+									}
+
+								}
+
+
+							} );
+
+
+							$( function(){
+
+
+								$( "#ingredientsList" ).sortable();
+								$( "#ingredientsList" ).disableSelection();
+
+
+							} );
+							
+						
+						</script>
+					
 					</div>
+					
+					<div class="row">
+						<div class="col-xs-3 col-xs-offset-3">
+						</div>
+						
+						<div class="col-xs-6">
+							<div id="ingredientsList">@if(isset($data->ingredients) && is_array($data->ingredients) && count($data->ingredients)>0)
+									@foreach($data->ingredients as $item)
+										<div class="btn btn-success btn-xs ingredientsItem"><i class="fa fa-times" title="Удалить"  onclick="$(this).parent().remove();"></i>&nbsp;&nbsp;<span class="ingr">{{$item}}</span><input type="hidden" name="ingredients[]" value="{{$item}}"></div> @endforeach
+								@endif</div>
+						</div>
+					</div>
+					
 					<div class="hr-line-dashed"></div>
 					@include('admin.common.public_anons_hit')
 					<div class="hr-line-dashed"></div>

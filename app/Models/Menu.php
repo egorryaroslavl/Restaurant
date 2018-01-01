@@ -27,7 +27,7 @@
 			'metatag_keywords' ];
 
 		protected $casts = [
-			'icon'   => 'array',
+		/*	'icon'   => 'array',*/
 			'public' => 'boolean',
 			'anons'  => 'boolean',
 			'hit'    => 'boolean',
@@ -51,10 +51,14 @@
 
 		}
 
-		public function thumbnail()
+		public static function menus()
 		{
 
-			return $this->icon();
+			return self::all()->where('public','=',1);
 
 		}
+
+
+
+
 	}

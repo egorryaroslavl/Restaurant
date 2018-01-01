@@ -67,9 +67,13 @@
 		 *
 		 * @return string
 		 */
-		function iconThumbnail( $public_id )
+		function iconThumbnail( $public_id, $params = false )
 		{
-			return \App\Http\Controllers\CustomHelpers::iconThumbnail( $public_id );
+
+
+			$params_ = $params ? $params_ = $params : false;
+
+			return \App\Http\Controllers\CustomHelpers::iconThumbnail( $public_id, $params_ );
 		}
 	}
 
@@ -91,5 +95,15 @@
 		function prev_next( $data, $id, $routeName )
 		{
 			return \App\Http\Controllers\CustomHelpers::prev_next( $data, $id, $routeName );
+		}
+	}
+
+
+
+	if( !function_exists( 'priceFormat' ) ){
+
+		function priceFormat( $price )
+		{
+			return \App\Http\Controllers\CustomHelpers::priceFormat( $price );
 		}
 	}

@@ -5,6 +5,7 @@
 	use App\Models\Dishe;
 	use App\Models\DishesMenu;
 	use App\Models\Menu;
+	use Illuminate\Validation\Rule;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Route;
 	use Intervention\Image\Facades\Image;
@@ -32,6 +33,18 @@
 
 		public function index()
 		{
+			//dishes_ingredients
+			$data   = Menu::paginate( 20 );
+			$dishes = Dishe::where( 'public', '=', 1 )->get();
+
+			$data->dishes = $dishes;
+			return view( 'menu.index', [ 'data' => $data ] );
+
+		}
+
+
+		public function admin_index()
+		{
 			$data        = Menu::paginate( config( 'admin.settings.per_page' ) );
 			$data->table = 'menus';
 			$breadcrumbs = '<div class="row wrapper border-bottom white-bg page-heading"><div class="col-lg-12"><h2>Меню</h2><ol class="breadcrumb"><li><a href="/admin">Главная</a></li></ol></div></div>';
@@ -51,7 +64,8 @@
 			$breadcrumbs = '<div class="row wrapper border-bottom white-bg page-heading"><div class="col-lg-12"><h2><i class="fa flaticon-menu-1"></i> Меню</h2><ol 
 class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active"><a href="/admin/menus">Меню</a></li><li>' . $titleAction . '</li></ol></div></div>';
 
-			return view( 'admin.menu.form', [ 'data' => $data, 'breadcrumbs' => $breadcrumbs ] );
+			return view( 'admin.menu.form', [ 'data'        => $data,
+			                                  'breadcrumbs' => $breadcrumbs ] );
 
 
 		}
@@ -73,7 +87,9 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active
 
 
 			$input = $request->all();
-			$input = array_except( $input, [ '_token', 'q', 'submit_button_back' ] );
+			$input = array_except( $input, [ '_token',
+				'q',
+				'submit_button_back' ] );
 
 			$menuModel = Menu::create( $input );
 			$id        = $menuModel->id;
@@ -103,7 +119,7 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active
 class="fa flaticon-menu-1"></i> Меню</h2><ol 
 class="breadcrumb"><li><a href="/admin">Главная</a></li><li 
 class="active"><a href="/admin/menus">Меню</a></li><li>Редактирование <strong>[
- <a href="/' . $data->table . '/' . $data->alias . '" style="color:blue" title="Смотреть на пользовательской части">' . $data->name . ' <img
+ <a href="/' . str_singular( $data->table ) . '/' . $data->alias . '" style="color:blue" title="Смотреть на пользовательской части">' . $data->name . ' <img
   src="/_admin/img/extlink.png" alt="" 
  style="margin:0"></a> ]</strong>  ' . prev_next( $data, $id, 'admin-menus-edit' ) . '</li></ol></div></div>';
 
@@ -148,7 +164,8 @@ class="active"><a href="/admin/menus">Меню</a></li><li>Редактиров�
 
 			$input = $request->all();
 
-			$input = array_except( $input, [ '_token', 'submit_button_back' ] );
+			$input = array_except( $input, [ '_token',
+				'submit_button_back' ] );
 			$menu->update( $input );
 			$menu->save();
 
@@ -176,17 +193,6 @@ class="active"><a href="/admin/menus">Меню</a></li><li>Редактиров�
 				return view( 'menu.detail', [ 'data' => $data ] );
 
 			}
-
-		}
-
-		public function menu_list()
-		{
-			//dishes_ingredients
-			$data   = Menu::paginate( 20 );
-			$dishes = Dishe::where( 'public', '=', 1 )->get();
-
-			$data->dishes = $dishes;
-			return view( 'menu.list', [ 'data' => $data ] );
 
 		}
 
@@ -228,7 +234,8 @@ FROM `dishes_menus` WHERE `menu_id`={$request->id} ORDER BY `pos` ASC";
 			//	$data->table = $request->table;
 
 
-			return view( 'admin.common.dishes_list', [ 'data' => (object )$data, 'route' => $routeName ] );
+			return view( 'admin.common.dishes_list', [ 'data'  => (object )$data,
+			                                           'route' => $routeName ] );
 
 
 		}
@@ -243,29 +250,40 @@ FROM `dishes_menus` WHERE `menu_id`={$request->id} ORDER BY `pos` ASC";
 			if( $request->route === 'admin-notconsists-dishes' ){
 
 				$dishesMenu = DishesMenu::firstOrCreate(
-					[ 'dishe_id' => $request->dishe_id, 'menu_id' => $request->menu_id ]
+					[ 'dishe_id' => $request->dishe_id,
+					  'menu_id'  => $request->menu_id ]
 
 				);
 
 
 				\DB::table( 'dishes_menus' )
 					->where( [
-						[ 'dishe_id' ,'=', $request->dishe_id ],
-						[ 'menu_id' ,'=',  $request->menu_id ],
+						[ 'dishe_id',
+							'=',
+							$request->dishe_id ],
+						[ 'menu_id',
+							'=',
+							$request->menu_id ],
 					] )
 					->increment( 'pos' );
-				return json_encode( [ 'error' => 'ok', 'message' => $dishesMenu->id ] );
+				return json_encode( [ 'error'   => 'ok',
+				                      'message' => $dishesMenu->id ] );
 
 			}
 
 			if( $request->route === 'admin-yetconsists-dishes' ){
 
 				$dishesMenu = DishesMenu::where( [
-					[ 'dishe_id', '=', $request->dishe_id ],
-					[ 'menu_id', '=', $request->menu_id ],
+					[ 'dishe_id',
+						'=',
+						$request->dishe_id ],
+					[ 'menu_id',
+						'=',
+						$request->menu_id ],
 				] )->delete();
 
-				return json_encode( [ 'error' => 'ok', 'message' => $dishesMenu ] );
+				return json_encode( [ 'error'   => 'ok',
+				                      'message' => $dishesMenu ] );
 
 			}
 		}

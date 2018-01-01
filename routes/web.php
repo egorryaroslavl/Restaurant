@@ -19,7 +19,7 @@
 	Route::group( [ 'middleware' => 'auth' ], function (){
 
 		/*MENUS*/
-		Route::get( 'admin/menus', 'MenusController@index' )->name( 'admin-menus' );
+		Route::get( 'admin/menus', 'MenusController@admin_index' )->name( 'admin-menus' );
 		Route::get( 'admin/menus/create', 'MenusController@create' )->name( 'admin-menus-create' );
 		Route::get( 'admin/menus/{id}/edit', 'MenusController@edit' )->name( 'admin-menus-edit' );
 		Route::post( 'admin/menus/store', 'MenusController@store' )->name( 'admin-menus-store' );
@@ -49,6 +49,6 @@
 
 	} );
 
-	Route::get( 'menu/', 'MenusController@menu_list' )->name( 'menulist' );
+	Route::get( 'menu', 'MenusController@index' )->name( 'menuindex' );
 	Route::get( 'menu/{alias}', 'MenusController@detail' )->name( 'menusdetail' );
 

@@ -14,9 +14,18 @@
 	{
 
 
-		public static function iconThumbnail( $public_id )
+		public static function iconThumbnail( $public_id, $params )
 		{
-			$thumbParams = [ "width"         => 150, "height" => 150, "crop" => "fill",
+			$width  = 150;
+			$height = 150;
+			if( $params ){
+				$width  = $params[ 0 ];
+				$height = $params[ 1 ];
+			}
+
+			$thumbParams = [ "width"         => $width,
+			                 "height"        => $height,
+			                 "crop"          => "fill",
 			                 'default_image' => 'no-image_rn9n3d.png' ];
 
 			$url = Cloudder::show( $public_id, $thumbParams );
@@ -29,8 +38,12 @@
 
 		public static function thumbnail( $public_id )
 		{
-			$thumbParams = [ "width"      => 20, "height" => 20, "crop" => "fit",
-			                 "html_width" => 20, "html_height" => 20, 'default_image' => 'no-image_rn9n3d.png' ];
+			$thumbParams = [ "width"         => 20,
+			                 "height"        => 20,
+			                 "crop"          => "fit",
+			                 "html_width"    => 20,
+			                 "html_height"   => 20,
+			                 'default_image' => 'no-image_rn9n3d.png' ];
 			$thumbUrl    = Cloudder::show( $public_id, $thumbParams );
 			return '<span class="thumbnail_20x20" style="background-image:url(' . $thumbUrl . ')"></span>';
 
@@ -39,7 +52,12 @@
 
 		public static function bytesToHuman( $bytes )
 		{
-			$units = [ 'B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB' ];
+			$units = [ 'B',
+				'KiB',
+				'MiB',
+				'GiB',
+				'TiB',
+				'PiB' ];
 
 			for( $i = 0; $bytes > 1024; $i++ ){
 				$bytes /= 1024;
@@ -92,9 +110,31 @@
 
 		}
 
+		public static function priceFormat( $price )
+		{
+			$r = ' &#8381;';
+			//$r = '  &#x20bd;';
+			if( $price == 0 ){
+				return '';
+			}
+			return number_format( $price, 2, ',', ' ' ) . $r;
+		}
+
+
 		public static function ruDate( $date )
 		{
-			$month = array( 1 => "января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря" );
+			$month = array( 1 => "января",
+				"февраля",
+				"марта",
+				"апреля",
+				"мая",
+				"июня",
+				"июля",
+				"августа",
+				"сентября",
+				"октября",
+				"ноября",
+				"декабря" );
 			if( $date !== null ){
 				$carbon = Carbon::parse( $date );
 				$d      = $carbon::parse( $date )->format( 'd' );

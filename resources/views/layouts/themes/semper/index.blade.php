@@ -1,7 +1,7 @@
 <!doctype html>
 @include('themes.'.env('TEMPLATE_NAME').'.head')
 <body>
-@include('themes.'.env('TEMPLATE_NAME').'.header.preloader')
+{{--@include('themes.'.env('TEMPLATE_NAME').'.header.preloader')--}}
 @include('themes.'.env('TEMPLATE_NAME').'.header.scrolltotop')
 @include('themes.'.env('TEMPLATE_NAME').'.header.index')
 @yield('content')

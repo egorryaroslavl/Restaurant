@@ -13,6 +13,7 @@
 			'alias',
 			'description',
 			'short_description',
+			'ingredients',
 			'price',
 			'pos',
 			'public',
@@ -26,10 +27,10 @@
 			'metatag_keywords' ];
 
 		protected $casts = [
-			'icon'   => 'array',
-			'public' => 'boolean',
-			'anons'  => 'boolean',
-			'hit'    => 'boolean',
+			'ingredients' => 'array',
+			'public'      => 'boolean',
+			'anons'       => 'boolean',
+			'hit'         => 'boolean',
 		];
 
 
@@ -38,9 +39,8 @@
 
 		public function menus()
 		{
-			return $this->belongsToMany('\App\Models\Menu','dishes_menus');
+			return $this->belongsToMany( '\App\Models\Menu', 'dishes_menus' );
 		}
-
 
 
 		public function icon()
@@ -59,8 +59,6 @@
 			return $this->icon();
 
 		}
-
-
 
 
 	}

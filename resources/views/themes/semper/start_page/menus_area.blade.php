@@ -4,8 +4,7 @@
 		<div class="row">
 			<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 				<div class="area-title text-center">
-					<h2>Деликатесы</h2>
-					<h3>Today’s menu</h3>
+					<h3>Меню</h3>
 				</div>
 			</div>
 		</div>
@@ -13,89 +12,33 @@
 			<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 				<div class="food-menu-list-menu">
 					<ul>
-						<li class="filter active" data-filter="all">All</li>
-						<li class="filter" data-filter=".breakfast">Breakfast</li>
-						<li class="filter" data-filter=".lunch">Lunch</li>
-						<li class="filter" data-filter=".dinner">Dinner</li>
-						<li class="filter" data-filter=".coffee">Coffe</li>
-						<li class="filter" data-filter=".snacks">Snacks</li>
+						<li class="filter" data-filter=".all">Все</li>
+						@if(isset($data))
+							@foreach($data->dishes as $item)
+								<li style="margin-bottom: 5px" class="filter"
+								    data-filter=".{{$item->alias}}">{{$item->name}}</li>
+							@endforeach
+						@endif
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="row food-menu-list">
-			<div class="mix col-md-3 col-lg-3 col-sm-6 col-xs-12 single-menu breakfast coffee snacks">
-				<div class="food-menu-img">
-					<a href="/themes/semper/img/menu/menu_1.jpg" class="menu-popup" data-effect="mfp-zoom-out"><img src="/themes/semper/img/menu/menu_1.jpg" alt=""></a>
-				</div>
-				<div class="food-menu-details">
-					<h4>Cupcake Recipes</h4>
-					<p class="menu-price">$120.00</p>
-				</div>
-			</div>
-			<div class="mix col-md-3 col-lg-3 col-sm-6 col-xs-12 single-menu dinner snacks">
-				<div class="food-menu-img">
-					<a href="/themes/semper/img/menu/menu_2.jpg" class="menu-popup" data-effect="mfp-zoom-out"><img src="/themes/semper/img/menu/menu_2.jpg" alt=""></a>
-				</div>
-				<div class="food-menu-details">
-					<h4>Cupcake Recipes</h4>
-					<p class="menu-price">$120.00</p>
-				</div>
-			</div>
-			<div class="mix col-md-3 col-lg-3 col-sm-6 col-xs-12 single-menu breakfast">
-				<div class="food-menu-img">
-					<a href="/themes/semper/img/menu/menu_3.jpg" class="menu-popup" data-effect="mfp-zoom-out"><img src="/themes/semper/img/menu/menu_3.jpg" alt=""></a>
-				</div>
-				<div class="food-menu-details">
-					<h4>Cupcake Recipes</h4>
-					<p class="menu-price">$120.00</p>
-				</div>
-			</div>
-			<div class="mix col-md-3 col-lg-3 col-sm-6 col-xs-12 single-menu dinner lunch breakfast snacks">
-				<div class="food-menu-img">
-					<a href="/themes/semper/img/menu/menu_4.jpg" class="menu-popup" data-effect="mfp-zoom-out"><img src="/themes/semper/img/menu/menu_4.jpg" alt=""></a>
-				</div>
-				<div class="food-menu-details">
-					<h4>Cupcake Recipes</h4>
-					<p class="menu-price">$120.00</p>
-				</div>
-			</div>
-			<div class="mix col-md-3 col-lg-3 col-sm-6 col-xs-12 single-menu lunch coffee">
-				<div class="food-menu-img">
-					<a href="/themes/semper/img/menu/menu_5.jpg" class="menu-popup" data-effect="mfp-zoom-out"><img src="/themes/semper/img/menu/menu_5.jpg" alt=""></a>
-				</div>
-				<div class="food-menu-details">
-					<h4>Cupcake Recipes</h4>
-					<p class="menu-price">$120.00</p>
-				</div>
-			</div>
-			<div class="mix col-md-3 col-lg-3 col-sm-6 col-xs-12 single-menu breakfast">
-				<div class="food-menu-img">
-					<a href="/themes/semper/img/menu/menu_6.jpg" class="menu-popup" data-effect="mfp-zoom-out"><img src="/themes/semper/img/menu/menu_6.jpg" alt=""></a>
-				</div>
-				<div class="food-menu-details">
-					<h4>Cupcake Recipes</h4>
-					<p class="menu-price">$120.00</p>
-				</div>
-			</div>
-			<div class="mix col-md-3 col-lg-3 col-sm-6 col-xs-12 single-menu lunch dinner">
-				<div class="food-menu-img">
-					<a href="/themes/semper/img/menu/menu_7.jpg" class="menu-popup" data-effect="mfp-zoom-out"><img src="/themes/semper/img/menu/menu_7.jpg" alt=""></a>
-				</div>
-				<div class="food-menu-details">
-					<h4>Cupcake Recipes</h4>
-					<p class="menu-price">$120.00</p>
-				</div>
-			</div>
-			<div class="mix col-md-3 col-lg-3 col-sm-6 col-xs-12 single-menu lunch dinner">
-				<div class="food-menu-img">
-					<a href="/themes/semper/img/menu/menu_8.jpg" class="menu-popup" data-effect="mfp-zoom-out"><img src="/themes/semper/img/menu/menu_8.jpg" alt=""></a>
-				</div>
-				<div class="food-menu-details">
-					<h4>Cupcake Recipes</h4>
-					<p class="menu-price">$120.00</p>
-				</div>
-			</div>
+			@if(isset($data))
+				@foreach($data->dishes as $item)
+					<div class="mix col-md-3 col-lg-3 col-sm-6 col-xs-12 single-menu all {{$item->alias}}">
+						<div class="food-menu-img">
+							<a href="{!! iconThumbnail($item->icon_public_id,[800,600] )!!}" class="menu-popup" data-effect="mfp-zoom-out"><img
+									src="{!! iconThumbnail($item->icon_public_id,[270,200] )!!}" alt=""></a>
+						</div>
+						<div class="food-menu-details">
+							<h4>{{$item->name}}</h4>
+							<p class="menu-price">{{$item->price or '--'}}&#8381;</p>
+						</div>
+					</div>
+				
+				@endforeach
+			@endif
 		</div>
 	</div>
 </section>

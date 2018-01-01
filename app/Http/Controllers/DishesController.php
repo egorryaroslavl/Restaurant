@@ -28,6 +28,9 @@
 		}
 
 
+		/**
+		 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+		 */
 		public function index()
 		{
 
@@ -55,6 +58,11 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active
 		}
 
 
+		/**
+		 * @param \Illuminate\Http\Request $request
+		 *
+		 * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+		 */
 		public function store( Request $request )
 		{
 
@@ -87,6 +95,11 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li class="active
 		}
 
 
+		/**
+		 * @param $id
+		 *
+		 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+		 */
 		public function edit( $id )
 		{
 
@@ -102,7 +115,7 @@ class="breadcrumb"><li><a href="/admin">Главная</a></li><li
 class="active"><a href="/admin/dishes">Блюда</a></li><li>Редактирование <strong>[
  <a href="/' . $data->table . '/' . $data->alias . '" style="color:blue" title="Смотреть на пользовательской части">' . $data->name . ' <img
   src="/_admin/img/extlink.png" alt="" 
- style="margin:0"></a> ]</strong></li></ol></div></div>';
+ style="margin:0"></a> ]</strong></li>  '.prev_next($data,$id,'admin-dishes-edit').'</ol></div></div>';
 
 			return view( 'admin.dishes.form', [
 				'data'        => $data,
@@ -162,9 +175,13 @@ class="active"><a href="/admin/dishes">Блюда</a></li><li>Редактиро
 			}
 		}
 
+		/**
+		 * @param \Illuminate\Http\Request $request
+		 *
+		 * @return string
+		 */
 		public function dishes_reorder( Request $request )
 		{
-
 
 			if( isset( $request->sort_data ) ){
 

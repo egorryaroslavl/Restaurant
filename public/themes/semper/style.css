@@ -2526,7 +2526,7 @@ ul.blog-instagram-feed-widget li {
     20. MENU PAGE
 ================================*/
 
-.menu-page .page-barner-bg {
+.menu-page .page-barner-bg,.menulist-page .page-barner-bg  {
     background: rgba(0, 0, 0, 0) url("/themes/semper/img/contact_page_barner.jpg") no-repeat scroll center center / cover;
 }
 
