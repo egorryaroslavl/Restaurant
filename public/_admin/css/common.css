@@ -214,3 +214,24 @@ label small {
 	background:      rgba(255, 129, 0, 0.50) url(/_admin/img/reorder-64x64.png) 50% 50% no-repeat;
 	background-size: 60%;
 	}
+
+/* Для admin.dishes.form */
+#ingredientsList {
+	padding-top: 5px;
+	}
+
+.ingredientsItem {
+	margin-bottom: 5px;
+	margin-right:  5px;
+	cursor:        default;
+
+	}
+
+.ingredientsItem i {
+	cursor: pointer;
+	}
+
+.ing-delete {
+	margin-right: 5px;
+	cursor:       pointer;
+	}

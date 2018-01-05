@@ -19,6 +19,7 @@
 			'public',
 			'icon_id',
 			'icon_public_id',
+			'weight',
 			'anons',
 			'hit',
 			'h1',

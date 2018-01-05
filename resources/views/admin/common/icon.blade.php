@@ -108,7 +108,7 @@
 	$( "body" ).on( "click", ".icon-delete", function(){
 		var id = $( this ).data( 'id' );
 		var table = $( this ).data( 'table' );
-		var public_id = $( this ).data( 'public_id' );
+		var icon_public_id = $( this ).data( 'public_id' );
 		if( $( "#iconPreview img" ).attr( 'src' ) === '/_admin/img/no-image.png' ){
 			alert( "Чтобы удалить что-то ненужное, сначала нужно загрузить что-то ненужное.\nНечего удалять!" );
 			return false;

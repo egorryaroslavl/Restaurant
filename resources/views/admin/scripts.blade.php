@@ -10,12 +10,15 @@
 <script src="/_admin/js/dual_listbox.js"></script>
 <script src="/_admin/js/common.js"></script>
 @if(in_array(Route::currentRouteName(),[ 'admin-menus-edit','admin-menus-create'])   )
-{{--<script src="/_admin/js/plugins/dropzone/dropzone.js"></script>--}}
 <script src="/_admin/js/images.js"></script>
 <script src="/_admin/js/menu.js"></script>
 @endif
+@if(in_array(Route::currentRouteName(),[ 'admin-teams-edit','admin-teams-create'])   )
+	<script src="/_admin/js/images.js"></script>
+	<script src="/_admin/js/teams.js"></script>
+@endif
 @if(in_array(Route::currentRouteName(),[ 'admin-dishes-edit','admin-dishes-create'])   )
-	{{--<script src="/_admin/js/plugins/dropzone/dropzone.js"></script>--}}
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
 	<script src="/_admin/js/images.js"></script>
 	<script src="/_admin/js/dishes.js"></script>
 @endif

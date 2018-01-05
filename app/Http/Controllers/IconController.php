@@ -17,11 +17,11 @@
 		 *
 		 * @return array|mixed|string
 		 */
-		public function thumbParams( $arr = false )
+		public function thumbParams( $arr = [] )
 		{
 			$this->thumbParams = config( 'admin.settings.thumb_params' );
 
-			return $arr ? array_merge( $this->thumbParams, $arr ) : $this->thumbParams;
+			return array_merge( $this->thumbParams, $arr );
 
 		}
 
@@ -34,6 +34,13 @@
 		{
 			if( isset( $request->table ) ){
 
+				$updateParams = [];
+				if( $request->table === 'teams' ){
+					$updateParams = [ "width"  => config( 'admin.teams.icon_width' ),
+					                  "height" => config( 'admin.teams.icon_height' ),
+					                  'face'   => true ];
+				}
+
 				$data = new Icon();
 
 				$icon_public_id = \DB::table( $request->table )
@@ -42,11 +49,11 @@
 					->first();
 
 				$iconPublicId = $icon_public_id === null
-					? 'no-image_rn9n3d.png'
+					? config( 'admin.settings.no-image' )
 					: $icon_public_id;
 
 				$data->tumbUrl = \Cloudder::show( $iconPublicId,
-					$this->thumbParams( [ 'default_image' => 'no-image_rn9n3d.png' ] ) );
+					$this->thumbParams($updateParams) );
 
 
 				$data->table          = $request->table;

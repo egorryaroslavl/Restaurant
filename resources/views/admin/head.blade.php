@@ -9,6 +9,9 @@
 	<link href="/_admin/js/plugins/iCheck/custom.css" rel="stylesheet">
 	<link href="/_admin/css/plugins/dualListbox/bootstrap-duallistbox.min.css" rel="stylesheet">
 	<link href="/_admin/css/dual_listbox.css" rel="stylesheet">
+	@if(in_array(Route::currentRouteName(),[ 'admin-dishes-edit','admin-dishes-create'])   )
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+	@endif
 	<link href="/_admin/css/common.css" rel="stylesheet">
 	<script src="/_admin/js/jquery-2.1.1.js"></script>
 	<script src="/_admin/js/jquery.json.min.js"></script>

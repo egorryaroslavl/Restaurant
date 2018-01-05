@@ -44,4 +44,4 @@
 		</section>
 		<!--MENUS AREA END-->
 	@endif
-@endsection
+@stop
